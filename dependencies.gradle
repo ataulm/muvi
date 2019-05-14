@@ -1,0 +1,28 @@
+ext {
+    versions = [
+            androidSdk: [
+                    compile: 28,
+                    min    : 23,
+                    target : 28
+            ],
+            kotlin    : '1.3.11'
+    ]
+
+    libraries = [
+            build                   : [
+                    androidGradle: 'com.android.tools.build:gradle:3.4.0-rc03',
+                    kotlinGradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+            ],
+            androidxAppCompat       : 'androidx.appcompat:appcompat:1.0.2',
+            androidxEspressoCore    : 'androidx.test.espresso:espresso-core:3.1.0',
+            androidxLegacySupportV13: 'androidx.legacy:legacy-support-v13:1.0.0',
+            androidxRecyclerView    : 'androidx.recyclerview:recyclerview:1.0.0',
+            androidxTestRules       : 'androidx.test:rules:1.1.0',
+            androidxTestRunner      : 'androidx.test:runner:1.1.0',
+            googleTruth             : 'com.google.truth:truth:0.42',
+            jUnit                   : 'junit:junit:4.12',
+            kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+            materialDesignComponents: 'com.google.android.material:material:1.0.0',
+            mockitoCore             : 'org.mockito:mockito-core:2.19.1',
+    ]
+}
