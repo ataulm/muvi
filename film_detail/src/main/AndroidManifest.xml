@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.tree.nuts">
+
+    <dist:module
+        dist:instant="false"
+        dist:onDemand="false"
+        dist:title="@string/title_film_detail">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+</manifest>
+
