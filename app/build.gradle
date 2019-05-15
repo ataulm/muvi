@@ -28,6 +28,8 @@ android {
 
 dependencies {
     implementation project(':data')
+    implementation project(':domain')
+
     implementation libraries.kotlinStdLib
     implementation libraries.androidxAppCompat
     implementation libraries.androidxRecyclerView

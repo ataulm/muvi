@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class LetterboxdApiFactory(private val apiKey: String,
+internal class LetterboxdApiFactory(private val apiKey: String,
                            private val apiSecret: String,
                            private val clock: Clock) {
 

@@ -4,56 +4,56 @@ import com.squareup.moshi.JsonClass
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
-interface LetterboxdApi {
+internal interface LetterboxdApi {
 
     @GET("films")
-    fun films(): Deferred<FilmsResponse>
+    fun films(): Deferred<FilmsResponseModel>
 }
 
 @JsonClass(generateAdapter = true)
-data class FilmsResponse(val next: String, val items: List<FilmSummary>)
+internal data class FilmsResponseModel(val next: String, val items: List<FilmSummaryModel>)
 
 @JsonClass(generateAdapter = true)
-data class FilmSummary(val name: String,
-                       val releaseYear: Int,
-                       val poster: Image?,
-                       val links: List<Link>)
+internal data class FilmSummaryModel(val name: String,
+                                     val releaseYear: Int,
+                                     val poster: ImageModel?,
+                                     val links: List<LinkModel>)
 
 @JsonClass(generateAdapter = true)
-data class Image(val sizes: List<Size>) {
+internal data class ImageModel(val sizes: List<SizeModel>) {
 
     @JsonClass(generateAdapter = true)
-    data class Size(val width: Int, val height: Int, val url: String)
+    internal data class SizeModel(val width: Int, val height: Int, val url: String)
 }
 
 @JsonClass(generateAdapter = true)
-data class Link(val type: String, val id: String, val url: String)
+internal data class LinkModel(val type: String, val id: String, val url: String)
 
 @JsonClass(generateAdapter = true)
-data class Genre(val id: String, val name: String)
+internal data class GenreModel(val id: String, val name: String)
 
 @JsonClass(generateAdapter = true)
-data class Film(val id: String,
-                val name: String,
-                val releaseYear: Int,
-                val tagline: String?,
-                val description: String?,
-                val runTime: Int?,
-                val poster: Image?,
-                val backdrop: Image?,
-                val backdropFocalPoint: Double?,
-                val genres: List<Genre>?,
-                val contributions: List<FilmContributions>,
-                val links: List<Link>)
+internal data class FilmModel(val id: String,
+                              val name: String,
+                              val releaseYear: Int,
+                              val tagline: String?,
+                              val description: String?,
+                              val runTime: Int?,
+                              val poster: ImageModel?,
+                              val backdrop: ImageModel?,
+                              val backdropFocalPoint: Double?,
+                              val genres: List<GenreModel>?,
+                              val contributions: List<FilmContributionsModel>,
+                              val links: List<LinkModel>)
 
 @JsonClass(generateAdapter = true)
-data class FilmContributions(val type: String, val contributors: List<ContributorSummary>) {
+internal data class FilmContributionsModel(val type: String, val contributors: List<ContributorSummaryModel>) {
 
     @JsonClass(generateAdapter = true)
-    open class ContributorSummary(open val id: String, open val name: String)
+    internal open class ContributorSummaryModel(open val id: String, open val name: String)
 
     @JsonClass(generateAdapter = true)
-    data class Actor(override val id: String, override val name: String,
-                     val characterName: String) : ContributorSummary(id, name)
+    internal data class ActorModel(override val id: String, override val name: String,
+                                   val characterName: String) : ContributorSummaryModel(id, name)
 
 }
