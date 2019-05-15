@@ -14,9 +14,6 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
-        buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
-        buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
     }
     buildTypes {
         release {
@@ -27,8 +24,7 @@ android {
 }
 
 dependencies {
-    implementation project(':data')
-    implementation project(':domain')
+    implementation project(':feed')
 
     implementation libraries.kotlinStdLib
     implementation libraries.androidxAppCompat

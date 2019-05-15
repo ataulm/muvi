@@ -1,18 +1,14 @@
-package com.tree.nuts.ui
+package com.tree.nuts
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.tree.nuts.AndroidFilmRepository
-import com.tree.nuts.BuildConfig
-import com.tree.nuts.Clock
-import com.tree.nuts.FilmRepository
-import com.tree.nuts.GetFilmsUseCase
+import com.tree.nuts.feed.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class FeedViewModel : ViewModel() {
 
     private val filmRepository: FilmRepository = AndroidFilmRepository.create(
             BuildConfig.API_KEY, BuildConfig.API_SECRET, object : Clock {

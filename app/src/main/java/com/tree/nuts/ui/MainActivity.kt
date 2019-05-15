@@ -7,12 +7,8 @@ import com.tree.nuts.R
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.test()
+        setContentView(R.layout.activity_main)
     }
-
 }
