@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.androidSdk.compile
+    defaultConfig {
+        minSdkVersion versions.androidSdk.min
+        targetSdkVersion versions.androidSdk.target
+
+        buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
+        buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
+    }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation libraries.kotlinStdLib
+    implementation libraries.kotlinCoroutinesCore
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}

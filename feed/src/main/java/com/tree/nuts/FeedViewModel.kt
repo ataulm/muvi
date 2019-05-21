@@ -1,27 +1,27 @@
-package com.tree.nuts.ui
+package com.tree.nuts
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.tree.nuts.BuildConfig
-import com.tree.nuts.Clock
-import com.tree.nuts.LetterboxdApiFactory
+import com.tree.nuts.feed.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class FeedViewModel : ViewModel() {
 
-    private val letterBoxdApi = LetterboxdApiFactory(
+    private val filmRepository: FilmRepository = AndroidFilmRepository.create(
             BuildConfig.API_KEY, BuildConfig.API_SECRET, object : Clock {
         override fun currentTimeMillis(): Long = System.currentTimeMillis()
     })
+    private val getFilms = GetFilmsUseCase(filmRepository)
+
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)
 
     fun test() {
         coroutineScope.launch(Dispatchers.IO) {
-            val result = letterBoxdApi.remoteLetterboxdApi().films().await()
+            val result = getFilms()
             Log.e("!!", result.toString())
         }
     }

@@ -1,1 +1,5 @@
-include ':app', ':data'
+include ':app'
+include ':data'
+include ':domain'
+include ':feed'
+include ':film_detail'
