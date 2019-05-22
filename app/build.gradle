@@ -11,6 +11,9 @@ android {
         targetSdkVersion versions.androidSdk.target
         versionCode 1
         versionName '1.0'
+
+        buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
+        buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
     }
 
     buildTypes {
@@ -24,9 +27,14 @@ android {
 }
 
 dependencies {
+    implementation project(':data')
+    implementation project(':domain')
     implementation project(':feed')
 
     implementation libraries.androidxAppCompat
+    implementation libraries.koin
+    implementation libraries.koinAndroid
+    implementation libraries.koinViewModel
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
 }

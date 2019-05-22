@@ -7,9 +7,6 @@ android {
     defaultConfig {
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
-
-        buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
-        buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
     }
 }
 
@@ -18,5 +15,8 @@ dependencies {
     implementation project(':domain')
 
     implementation libraries.androidxLifecycleExtensions
+    implementation libraries.koin
+    implementation libraries.koinAndroid
+    implementation libraries.koinViewModel
     implementation libraries.kotlinCoroutinesCore
 }
