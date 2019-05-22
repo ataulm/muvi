@@ -2,12 +2,9 @@ apply plugin: 'com.android.dynamic-feature'
 
 android {
     compileSdkVersion versions.androidSdk.compile
-
     defaultConfig {
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
-        versionCode 1
-        versionName '1.0'
     }
 }
 

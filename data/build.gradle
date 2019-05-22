@@ -4,14 +4,12 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation project(':domain')
 
-    implementation libraries.coroutinesAdapter
-    implementation libraries.kotlinStdLib
     implementation libraries.kotlinCoroutinesCore
-
+    implementation libraries.kotlinStdLib
     implementation libraries.moshi
-    kapt libraries.moshiKotlinCodegen
-
     implementation libraries.retrofit
-    implementation libraries.retrofitKotlinCoroutines
+    implementation libraries.retrofitKotlinCoroutinesAdapter
     implementation libraries.retrofitMoshi
+
+    kapt libraries.moshiKotlinCodegen
 }

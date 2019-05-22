@@ -1,5 +1,7 @@
 package com.tree.nuts;
 
+import java.nio.charset.StandardCharsets;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -7,10 +9,10 @@ class HmacSha256 {
 
     static String generateHash(String key, String message) {
         try {
-            SecretKeySpec signingKey = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA256");
+            SecretKeySpec signingKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
             Mac mac = Mac.getInstance("HmacSHA256");
             mac.init(signingKey);
-            byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
+            byte[] rawHmac = mac.doFinal(message.getBytes(StandardCharsets.UTF_8));
 
             byte[] hexArray = {
                     (byte) '0', (byte) '1', (byte) '2', (byte) '3',

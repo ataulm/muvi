@@ -17,9 +17,6 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
-    implementation libraries.kotlinStdLib
+    implementation libraries.androidxLifecycleExtensions
     implementation libraries.kotlinCoroutinesCore
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
