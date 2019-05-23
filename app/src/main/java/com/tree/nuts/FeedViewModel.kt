@@ -1,21 +1,24 @@
 package com.tree.nuts
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
-    private val parentJob = Job()
-    private val coroutineScope = CoroutineScope(parentJob)
+    private val _films = MutableLiveData<Film>()
+    val films: LiveData<Film> = _films
 
-    fun test() {
-        coroutineScope.launch(Dispatchers.IO) {
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = getFilms()
-            Log.e("!!", result.toString())
+            withContext(Dispatchers.Main) {
+                _films.value = result.first()
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.androidSdk.compile
@@ -10,4 +12,6 @@ android {
 
 dependencies {
     implementation project(':app')
+
+    implementation libraries.androidxAppCompat
 }
