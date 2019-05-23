@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
+internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)

@@ -1,4 +1,4 @@
-package com.tree.nuts.ui
+package com.tree.nuts
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

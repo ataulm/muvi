@@ -1,4 +1,4 @@
-package com.tree.nuts.ui
+package com.tree.nuts
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

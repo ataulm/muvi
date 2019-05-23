@@ -29,7 +29,6 @@ android {
 dependencies {
     implementation project(':data')
     implementation project(':domain')
-    implementation project(':feed')
 
     implementation libraries.androidxAppCompat
     implementation libraries.koin

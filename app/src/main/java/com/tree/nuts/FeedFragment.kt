@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FeedFragment : Fragment() {
+internal class FeedFragment : Fragment() {
 
-    val feedViewModel: FeedViewModel by viewModel()
+    private val feedViewModel: FeedViewModel by viewModel()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

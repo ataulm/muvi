@@ -1,11 +1,5 @@
-package com.tree.nuts.ui
+package com.tree.nuts
 
-import com.tree.nuts.AndroidFilmRepository
-import com.tree.nuts.BuildConfig
-import com.tree.nuts.Clock
-import com.tree.nuts.FeedViewModel
-import com.tree.nuts.FilmRepository
-import com.tree.nuts.GetFilmsUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
