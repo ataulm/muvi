@@ -14,7 +14,9 @@ internal interface LetterboxdApi {
 internal data class FilmsResponseModel(val next: String, val items: List<FilmSummaryModel>)
 
 @JsonClass(generateAdapter = true)
-internal data class FilmSummaryModel(val name: String,
+internal data class FilmSummaryModel(
+                                     val id: String,
+                                     val name: String,
                                      val releaseYear: Int,
                                      val poster: ImageModel?,
                                      val links: List<LinkModel>)

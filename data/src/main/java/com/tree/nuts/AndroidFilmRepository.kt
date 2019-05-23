@@ -4,7 +4,7 @@ class AndroidFilmRepository internal constructor(private val letterboxdApi: Lett
 
     override suspend fun getFilms(): List<Film> {
         return letterboxdApi.films().await().let { filmsResponseModel ->
-            filmsResponseModel.items.map { Film(it.name) }
+            filmsResponseModel.items.map { Film(it.id, it.name) }
         }
     }
 
