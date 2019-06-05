@@ -2,6 +2,7 @@ package com.muvi.data
 
 import com.muvi.domain.Film
 import com.muvi.domain.FilmRepository
+import com.muvi.remote.Clock
 
 class AndroidFilmRepository internal constructor(private val letterboxdApi: LetterboxdApi) : FilmRepository {
 
@@ -13,7 +14,10 @@ class AndroidFilmRepository internal constructor(private val letterboxdApi: Lett
 
     companion object {
 
-        fun create(apiKey: String, apiSecret: String, clock: Clock): AndroidFilmRepository {
+        fun create(apiKey: String, apiSecret: String): AndroidFilmRepository {
+            val clock = object : Clock {
+                override fun currentTimeMillis(): Long = System.currentTimeMillis()
+            }
             val api = LetterboxdApiFactory(apiKey, apiSecret, clock).remoteLetterboxdApi()
             return AndroidFilmRepository(api)
         }

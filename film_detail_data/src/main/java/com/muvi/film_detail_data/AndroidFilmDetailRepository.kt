@@ -9,7 +9,7 @@ import com.muvi.remote.LetterboxdApiFactory
 class AndroidFilmDetailRepository internal constructor(private val letterboxdApi: LetterboxdApi) : FilmDetailRepository {
 
     override suspend fun getFilmDetail(id: String): FilmDetail {
-        return letterboxdApi.films().await().items.find { it.id == id }.let {filmSummaryModel ->
+        return letterboxdApi.films().await().items.find { it.id == id }.let { filmSummaryModel ->
             FilmDetail(
                     filmSummaryModel!!.id,
                     filmSummaryModel.name,
@@ -20,7 +20,10 @@ class AndroidFilmDetailRepository internal constructor(private val letterboxdApi
 
     companion object {
 
-        fun create(apiKey: String, apiSecret: String, clock: Clock): AndroidFilmDetailRepository {
+        fun create(apiKey: String, apiSecret: String): AndroidFilmDetailRepository {
+            val clock = object : Clock {
+                override fun currentTimeMillis(): Long = System.currentTimeMillis()
+            }
             val api = LetterboxdApiFactory(apiKey, apiSecret, clock).remoteLetterboxdApi()
             return AndroidFilmDetailRepository(api)
         }
