@@ -1,12 +1,13 @@
-package com.muvi
+package com.muvi.feed
 
+import com.muvi.FeedViewModel
 import com.muvi.data.AndroidFilmRepository
 import com.muvi.domain.FilmRepository
 import com.muvi.domain.GetFilmsUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val muviModule = module {
+val feedModule = module {
 
     viewModel { FeedViewModel(get()) }
 

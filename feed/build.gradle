@@ -1,41 +1,25 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.androidSdk.compile
     defaultConfig {
-        applicationId 'com.muvi'
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
-        versionCode 1
-        versionName '1.0'
 
         buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
         buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
     }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    dynamicFeatures = [':film_detail']
 }
 
 dependencies {
-//    implementation project(':data')
-//    implementation project(':domain')
-    implementation project(':feed')
+    implementation project(':data')
+    implementation project(':domain')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel
-    implementation libraries.kotlinCoroutinesCore
-    implementation libraries.kotlinStdLib
 }
