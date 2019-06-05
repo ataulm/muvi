@@ -2,8 +2,8 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-    implementation project(':domain')
-    implementation project(':remote')
+    implementation project(':film_detail_domain')
+    api project(':remote')
 
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib

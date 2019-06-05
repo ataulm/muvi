@@ -3,7 +3,6 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(':domain')
-    implementation project(':remote')
 
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib

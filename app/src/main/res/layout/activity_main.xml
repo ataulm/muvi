@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <fragment
-        android:name="com.tree.nuts.FeedFragment"
+        android:name="com.muvi.FeedFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/TODO" />

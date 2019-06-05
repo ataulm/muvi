@@ -12,6 +12,12 @@ android {
 
 dependencies {
     implementation project(':app')
+    implementation project(':film_detail_data')
+    implementation project(':film_detail_domain')
 
     implementation libraries.androidxAppCompat
+    implementation libraries.androidxLifecycleViewmodelKtx
+    implementation libraries.koin
+    implementation libraries.koinAndroid
+    implementation libraries.koinViewModel
 }

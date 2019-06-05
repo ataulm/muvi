@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion versions.androidSdk.compile
     defaultConfig {
-        applicationId 'com.example'
+        applicationId 'com.muvi'
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
         versionCode 1
