@@ -42,7 +42,7 @@ internal class FeedFragment : Fragment() {
 
     private fun intent(componentName: String, filmId: String): Intent {
         return Intent(Intent.ACTION_VIEW)
-                .setClassName(BuildConfig.APPLICATION_ID, componentName)
+                .setClassName("com.muvi", componentName)
                 .putExtra("FILM_ID", filmId)
     }
 }
