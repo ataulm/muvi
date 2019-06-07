@@ -7,7 +7,7 @@ import retrofit2.http.GET
 internal interface LetterboxdApi {
 
     @GET("films")
-    fun films(): Deferred<FilmsResponseModel>
+    suspend fun films(): FilmsResponseModel
 }
 
 @JsonClass(generateAdapter = true)
