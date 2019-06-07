@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.muvi.FeedViewModel
-import com.muvi.domain.Film
+import com.muvi.feed_domain.Film
 import kotlinx.android.synthetic.main.fragment_feed.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules

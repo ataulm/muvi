@@ -1,4 +1,4 @@
-package com.muvi.data
+package com.muvi.feed_data
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.muvi.remote.Clock

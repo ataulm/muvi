@@ -1,9 +1,9 @@
 package com.muvi.feed
 
 import com.muvi.FeedViewModel
-import com.muvi.data.AndroidFilmRepository
-import com.muvi.domain.FilmRepository
-import com.muvi.domain.GetFilmsUseCase
+import com.muvi.feed_data.AndroidFilmRepository
+import com.muvi.feed_domain.FilmRepository
+import com.muvi.feed_domain.GetFilmsUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

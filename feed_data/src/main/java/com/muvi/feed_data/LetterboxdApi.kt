@@ -1,4 +1,4 @@
-package com.muvi.data
+package com.muvi.feed_data
 
 import com.squareup.moshi.JsonClass
 import kotlinx.coroutines.Deferred

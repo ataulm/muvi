@@ -1,4 +1,4 @@
-package com.muvi.data;
+package com.muvi.feed_data;
 
 import java.nio.charset.StandardCharsets;
 

@@ -14,8 +14,8 @@ android {
 }
 
 dependencies {
-    implementation project(':data')
-    implementation project(':domain')
+    implementation project(':feed_data')
+    implementation project(':feed_domain')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx

@@ -1,7 +1,7 @@
-package com.muvi.data
+package com.muvi.feed_data
 
-import com.muvi.domain.Film
-import com.muvi.domain.FilmRepository
+import com.muvi.feed_domain.Film
+import com.muvi.feed_domain.FilmRepository
 import com.muvi.remote.Clock
 
 class AndroidFilmRepository internal constructor(private val letterboxdApi: LetterboxdApi) : FilmRepository {
