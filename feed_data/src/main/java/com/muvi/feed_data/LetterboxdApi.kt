@@ -1,4 +1,4 @@
-package com.muvi.data
+package com.muvi.feed_data
 
 import com.squareup.moshi.JsonClass
 import kotlinx.coroutines.Deferred
@@ -7,7 +7,7 @@ import retrofit2.http.GET
 internal interface LetterboxdApi {
 
     @GET("films")
-    fun films(): Deferred<FilmsResponseModel>
+    suspend fun films(): FilmsResponseModel
 }
 
 @JsonClass(generateAdapter = true)

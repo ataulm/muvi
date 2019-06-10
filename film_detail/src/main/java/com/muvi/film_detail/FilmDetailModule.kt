@@ -4,7 +4,6 @@ import com.muvi.BuildConfig
 import com.muvi.film_detail.domain.FilmDetailRepository
 import com.muvi.film_detail.domain.GetFilmDetailUseCase
 import com.muvi.film_detail_data.AndroidFilmDetailRepository
-import com.muvi.remote.Clock
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -15,18 +14,11 @@ val filmDetailModule = module {
     factory<FilmDetailRepository> {
         AndroidFilmDetailRepository.create(
                 BuildConfig.API_KEY,
-                BuildConfig.API_SECRET,
-                get()
+                BuildConfig.API_SECRET
         )
     }
 
     factory {
         GetFilmDetailUseCase(get())
-    }
-
-    factory<Clock> {
-        object : Clock {
-            override fun currentTimeMillis(): Long = System.currentTimeMillis()
-        }
     }
 }

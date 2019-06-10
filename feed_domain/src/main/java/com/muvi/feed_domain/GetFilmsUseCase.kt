@@ -1,4 +1,4 @@
-package com.muvi.domain
+package com.muvi.feed_domain
 
 class GetFilmsUseCase(
         private val filmRepository: FilmRepository

@@ -29,7 +29,7 @@ ext {
             kotlinCoroutinesCore           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
             moshi                          : "com.squareup.moshi:moshi:${versions.moshi}",
             moshiKotlinCodegen             : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
-            retrofit                       : 'com.squareup.retrofit2:retrofit:2.4.0',
+            retrofit                       : 'com.squareup.retrofit2:retrofit:2.6.0',
             retrofitKotlinCoroutinesAdapter: "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.retrofitKotlinCoroutinesAdapter}",
             retrofitMoshi                  : 'com.squareup.retrofit2:converter-moshi:2.4.0'
     ]

@@ -3,7 +3,7 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(':film_detail_domain')
-    api project(':remote')
+    implementation project(':remote')
 
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib

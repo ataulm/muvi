@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.muvi.domain.Film
-import com.muvi.domain.GetFilmsUseCase
+import com.muvi.feed_domain.Film
+import com.muvi.feed_domain.GetFilmsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
