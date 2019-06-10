@@ -1,13 +1,19 @@
 package com.muvi.remote
 
 import com.squareup.moshi.JsonClass
-import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface LetterboxdApi {
 
     @GET("films")
     suspend fun films(): FilmsResponseModel
+
+    @GET("film/{id}")
+    suspend fun film(@Path("id") id: String): FilmModel
+
+    @GET("contributor/{id}/contributions?type=Actor")
+    suspend fun filmsByActor(@Path("id") id: String): FilmContributionsResponseModel
 }
 
 @JsonClass(generateAdapter = true)
@@ -19,7 +25,11 @@ data class FilmSummaryModel(
         val name: String,
         val releaseYear: Int,
         val poster: ImageModel?,
-        val links: List<LinkModel>)
+        val directors: List<DirectorModel>
+)
+
+@JsonClass(generateAdapter = true)
+data class DirectorModel(val name: String)
 
 @JsonClass(generateAdapter = true)
 data class ImageModel(val sizes: List<SizeModel>) {
@@ -29,10 +39,10 @@ data class ImageModel(val sizes: List<SizeModel>) {
 }
 
 @JsonClass(generateAdapter = true)
-data class LinkModel(val type: String, val id: String, val url: String)
+data class FilmContributionsResponseModel(val items: List<FilmContributionModel>)
 
 @JsonClass(generateAdapter = true)
-data class GenreModel(val id: String, val name: String)
+data class FilmContributionModel(val film: FilmSummaryModel, val characterName: String)
 
 @JsonClass(generateAdapter = true)
 data class FilmModel(val id: String,
@@ -44,18 +54,13 @@ data class FilmModel(val id: String,
                      val poster: ImageModel?,
                      val backdrop: ImageModel?,
                      val backdropFocalPoint: Double?,
-                     val genres: List<GenreModel>?,
-                     val contributions: List<FilmContributionsModel>,
-                     val links: List<LinkModel>)
+                     val contributions: List<FilmContributionsModel>)
 
+// we want type = `Actor`
 @JsonClass(generateAdapter = true)
-data class FilmContributionsModel(val type: String, val contributors: List<ContributorSummaryModel>) {
+data class FilmContributionsModel(val type: String, val contributors: List<ActorModel>) {
 
     @JsonClass(generateAdapter = true)
-    open class ContributorSummaryModel(open val id: String, open val name: String)
-
-    @JsonClass(generateAdapter = true)
-    data class ActorModel(override val id: String, override val name: String,
-                          val characterName: String) : ContributorSummaryModel(id, name)
+    data class ActorModel(val id: String, val name: String, val characterName: String?)
 
 }
