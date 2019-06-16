@@ -11,7 +11,11 @@ val feedModule = module {
     viewModel { FeedViewModel(get()) }
 
     factory<FilmRepository> {
-        AndroidFilmRepository.create(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+        AndroidFilmRepository.create(
+                BuildConfig.API_KEY,
+                BuildConfig.API_SECRET,
+                enableHttpLogging = BuildConfig.DEBUG
+        )
     }
 
     factory {

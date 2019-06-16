@@ -30,11 +30,11 @@ class AndroidFilmRepository internal constructor(private val letterboxdApi: Lett
 
     companion object {
 
-        fun create(apiKey: String, apiSecret: String): AndroidFilmRepository {
+        fun create(apiKey: String, apiSecret: String, enableHttpLogging: Boolean): AndroidFilmRepository {
             val clock = object : Clock {
                 override fun currentTimeMillis(): Long = System.currentTimeMillis()
             }
-            val api = LetterboxdApiFactory(apiKey, apiSecret, clock).remoteLetterboxdApi()
+            val api = LetterboxdApiFactory(apiKey, apiSecret, clock, enableHttpLogging).remoteLetterboxdApi()
             return AndroidFilmRepository(api)
         }
     }
