@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.muvi.FeedViewModel
-import com.muvi.feed_domain.Film
+import com.muvi.base_domain.FilmSummary
 import kotlinx.android.synthetic.main.fragment_feed.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
+// TODO: show list of films (like Letterboxd search)
 internal class FeedFragment : Fragment() {
 
     private val feedViewModel: FeedViewModel by viewModel()
@@ -30,9 +30,9 @@ internal class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val button = firstFilmButton
-        feedViewModel.films.observe(this, Observer<Film> { film ->
+        feedViewModel.films.observe(this, Observer<FilmSummary> { film ->
             film?.let {
-                button.text = film.name
+                button.text = film.title
                 button.setOnClickListener {
                     startActivity(intent("com.muvi.film_detail.FilmDetailActivity", film.id))
                 }

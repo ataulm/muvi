@@ -1,6 +1,5 @@
 package com.muvi.feed
 
-import com.muvi.FeedViewModel
 import com.muvi.feed_data.AndroidFilmRepository
 import com.muvi.feed_domain.FilmRepository
 import com.muvi.feed_domain.GetFilmsUseCase
@@ -12,7 +11,11 @@ val feedModule = module {
     viewModel { FeedViewModel(get()) }
 
     factory<FilmRepository> {
-        AndroidFilmRepository.create(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+        AndroidFilmRepository.create(
+                BuildConfig.API_KEY,
+                BuildConfig.API_SECRET,
+                enableHttpLogging = BuildConfig.DEBUG
+        )
     }
 
     factory {

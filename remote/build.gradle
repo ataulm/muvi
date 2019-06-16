@@ -5,6 +5,8 @@ dependencies {
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
+    implementation libraries.okhttp
+    implementation libraries.okhttpLoggingInterceptor
     implementation libraries.retrofit
     implementation libraries.retrofitKotlinCoroutinesAdapter
     implementation libraries.retrofitMoshi

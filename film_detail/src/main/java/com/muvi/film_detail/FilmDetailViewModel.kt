@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.muvi.film_detail.domain.FilmDetail
+import com.muvi.base_domain.Film
 import com.muvi.film_detail.domain.GetFilmDetailUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,21 +13,21 @@ import kotlinx.coroutines.withContext
 
 internal class FilmDetailViewModel(
         private val filmId: String,
-        private val getFilms: GetFilmDetailUseCase
+        private val getFilm: GetFilmDetailUseCase
 ) : ViewModel() {
     fun foo() {
 
     }
 
-    private val _filmDetail = MutableLiveData<FilmDetail>()
-    val filmDetail: LiveData<FilmDetail> = _filmDetail
+    private val _film = MutableLiveData<Film>()
+    val film: LiveData<Film> = _film
 
     init {
-        Log.d("!!", "vm film detail: $filmId")
         viewModelScope.launch(Dispatchers.IO) {
-            val result = getFilms(filmId)
+            val result = getFilm(filmId)
+            Log.d("!!", "vm film detail: $result")
             withContext(Dispatchers.Main) {
-                _filmDetail.value = result
+                _film.value = result
             }
         }
     }

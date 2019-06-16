@@ -24,6 +24,11 @@ android {
     }
 
     dynamicFeatures = [':film_detail']
+
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
 }
 
 dependencies {

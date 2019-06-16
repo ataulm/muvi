@@ -8,6 +8,10 @@ android {
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
     }
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
 }
 
 dependencies {

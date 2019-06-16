@@ -4,5 +4,5 @@ class GetFilmDetailUseCase(
         private val filmDetailRepository: FilmDetailRepository
 ) {
 
-    suspend operator fun invoke(id: String) = filmDetailRepository.getFilmDetail(id)
+    suspend operator fun invoke(id: String) = filmDetailRepository.getFilm(id)
 }

@@ -14,7 +14,8 @@ val filmDetailModule = module {
     factory<FilmDetailRepository> {
         AndroidFilmDetailRepository.create(
                 BuildConfig.API_KEY,
-                BuildConfig.API_SECRET
+                BuildConfig.API_SECRET,
+                enableHttpLogging = BuildConfig.DEBUG
         )
     }
 

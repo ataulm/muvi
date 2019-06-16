@@ -7,6 +7,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
@@ -14,16 +15,22 @@ import java.util.concurrent.TimeUnit
 
 class LetterboxdApiFactory(private val apiKey: String,
                            private val apiSecret: String,
-                           private val clock: Clock) {
+                           private val clock: Clock,
+                           private val enableHttpLogging: Boolean) {
 
     fun remoteLetterboxdApi(): LetterboxdApi {
         val okHttpClient = OkHttpClient.Builder()
                 .addNetworkInterceptor(AddApiKeyQueryParameterInterceptor(apiKey, clock))
                 .addNetworkInterceptor(AddAuthorizationHeaderInterceptor(apiSecret))
-                .build()
+
+        if (enableHttpLogging) {
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            okHttpClient.addInterceptor(httpLoggingInterceptor)
+        }
 
         return Retrofit.Builder()
-                .client(okHttpClient)
+                .client(okHttpClient.build())
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .baseUrl("https://api.letterboxd.com/api/v0/")

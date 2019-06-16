@@ -7,6 +7,20 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.parameter.parametersOf
 
+/**
+ * TODO: show:
+ *
+ * - poster
+ * - backdrop
+ * - description
+ * - year
+ * - directors
+ * - title
+ * - list of characters
+ *      - image (optional)
+ *      - actor name
+ *      - character name
+ */
 class FilmDetailActivity : AppCompatActivity() {
 
     private val filmDetailViewModel: FilmDetailViewModel by viewModel { parametersOf(filmId) }
