@@ -14,7 +14,7 @@ import org.koin.core.parameter.parametersOf
  * - backdrop
  * - description
  * - year
- * - director
+ * - directors
  * - title
  * - list of cast
  *      - image (optional)

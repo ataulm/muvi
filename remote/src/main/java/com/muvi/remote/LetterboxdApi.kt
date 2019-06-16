@@ -45,22 +45,22 @@ data class FilmContributionsResponseModel(val items: List<FilmContributionModel>
 data class FilmContributionModel(val film: FilmSummaryModel, val characterName: String)
 
 @JsonClass(generateAdapter = true)
-data class FilmModel(val id: String,
-                     val name: String,
-                     val releaseYear: Int,
-                     val tagline: String?,
-                     val description: String?,
-                     val runTime: Int?,
-                     val poster: ImageModel?,
-                     val backdrop: ImageModel?,
-                     val backdropFocalPoint: Double?,
-                     val contributions: List<FilmContributionsModel>)
+data class FilmModel(
+        val id: String,
+        val name: String,
+        val releaseYear: Int,
+        val tagline: String?,
+        val description: String?,
+        val runTime: Int?,
+        val poster: ImageModel?,
+        val backdrop: ImageModel?,
+        val backdropFocalPoint: Double?,
+        val contributions: List<ContributionModel>
+)
 
-// we want type = `Actor`
 @JsonClass(generateAdapter = true)
-data class FilmContributionsModel(val type: String, val contributors: List<ActorModel>) {
+data class ContributionModel(val type: String, val contributors: List<Contributor>) {
 
     @JsonClass(generateAdapter = true)
-    data class ActorModel(val id: String, val name: String, val characterName: String?)
-
+    data class Contributor(val id: String, val name: String, val characterName: String?)
 }

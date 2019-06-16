@@ -16,7 +16,7 @@ class AndroidFilmRepository internal constructor(private val letterboxdApi: Lett
                         id = filmSummaryModel.id,
                         title = filmSummaryModel.name,
                         year = filmSummaryModel.releaseYear,
-                        director = filmSummaryModel.directors.firstOrNull()?.name,
+                        directors = filmSummaryModel.directors.joinToString(separator = " & ") { it.name },
                         poster = filmSummaryModel.poster?.let { imageModel ->
                             val sizes = imageModel.sizes.map { sizeModel ->
                                 Image.Size(sizeModel.width, sizeModel.height, sizeModel.url)
