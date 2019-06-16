@@ -16,7 +16,7 @@ data class Film(
         val poster: Image?,
         val backdrop: Image?,
         val description: String?,
-        val cast: List<Character>
+        val characters: List<Character>
 )
 
 data class Character(val name: String, val actor: Actor)

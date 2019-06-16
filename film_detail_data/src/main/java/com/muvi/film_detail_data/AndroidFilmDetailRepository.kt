@@ -23,7 +23,7 @@ class AndroidFilmDetailRepository internal constructor(private val letterboxdApi
                 poster = filmModel.poster?.image(),
                 description = filmModel.description,
                 backdrop = filmModel.backdrop?.image(),
-                cast = filmModel.characters()
+                characters = filmModel.characters()
         )
     }
 

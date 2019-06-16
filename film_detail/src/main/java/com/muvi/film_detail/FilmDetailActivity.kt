@@ -16,7 +16,7 @@ import org.koin.core.parameter.parametersOf
  * - year
  * - directors
  * - title
- * - list of cast
+ * - list of characters
  *      - image (optional)
  *      - actor name
  *      - character name
