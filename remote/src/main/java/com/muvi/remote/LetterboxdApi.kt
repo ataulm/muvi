@@ -42,7 +42,7 @@ data class ImageModel(val sizes: List<SizeModel>) {
 data class FilmContributionsResponseModel(val items: List<FilmContributionModel>)
 
 @JsonClass(generateAdapter = true)
-data class FilmContributionModel(val film: FilmSummaryModel, val characterName: String)
+data class FilmContributionModel(val film: FilmSummaryModel, val characterName: String?)
 
 @JsonClass(generateAdapter = true)
 data class FilmModel(

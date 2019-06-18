@@ -16,3 +16,29 @@ allprojects {
         jcenter()
     }
 }
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion versions.androidSdk.compile
+
+                defaultConfig {
+                    minSdkVersion versions.androidSdk.min
+                    targetSdkVersion versions.androidSdk.target
+
+                    versionCode 1
+                    versionName '1.0'
+
+                    buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
+                    buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
+                }
+
+                compileOptions {
+                    targetCompatibility = versions.javaCompile
+                    sourceCompatibility = versions.javaCompile
+                }
+            }
+        }
+    }
+}

@@ -2,18 +2,6 @@ apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-android {
-    compileSdkVersion versions.androidSdk.compile
-    defaultConfig {
-        minSdkVersion versions.androidSdk.min
-        targetSdkVersion versions.androidSdk.target
-    }
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
-}
-
 dependencies {
     implementation project(':app')
     implementation project(':film_detail_data')

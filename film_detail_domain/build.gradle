@@ -1,7 +1,7 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation project(':base_domain')
+    api project(':base_domain')
 
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib

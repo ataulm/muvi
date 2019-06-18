@@ -4,16 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion versions.androidSdk.compile
     defaultConfig {
         applicationId 'com.muvi'
-        minSdkVersion versions.androidSdk.min
-        targetSdkVersion versions.androidSdk.target
-        versionCode 1
-        versionName '1.0'
-
-        buildConfigField 'String', 'API_KEY', "\"${letterboxd_api_key}\""
-        buildConfigField 'String', 'API_SECRET', "\"${letterboxd_api_secret}\""
     }
 
     buildTypes {
@@ -23,12 +15,7 @@ android {
         }
     }
 
-    dynamicFeatures = [':film_detail']
-
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
+    dynamicFeatures = [':actor_detail', ':film_detail']
 }
 
 dependencies {

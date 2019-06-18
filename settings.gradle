@@ -1,5 +1,8 @@
 include ':app'
 include ':base_domain'
+include ':actor_detail'
+include ':actor_detail_data'
+include ':actor_detail_domain'
 include ':feed_data'
 include ':feed_domain'
 include ':feed'
