@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 dependencies {
     implementation project(':feed_data')
     implementation project(':feed_domain')
+    implementation project(':navigation')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx
