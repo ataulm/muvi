@@ -7,7 +7,7 @@ import com.muvi.film_detail_data.AndroidFilmDetailRepository
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val filmDetailModule = module {
+val filmDetailModule = module(override = true) {
 
     viewModel { (filmId: String) -> FilmDetailViewModel(filmId, get()) }
 

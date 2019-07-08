@@ -23,6 +23,7 @@ ext {
             ],
             androidxAppCompat              : 'androidx.appcompat:appcompat:1.0.2',
             androidxLifecycleViewmodelKtx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidXLifecycle}",
+            androidxRecyclerView           : 'androidx.recyclerview:recyclerview:1.0.0',
             koin                           : "org.koin:koin-core:${versions.koin}",
             koinAndroid                    : "org.koin:koin-android:${versions.koin}",
             koinScope                      : "org.koin:koin-androidx-scope:${versions.koin}",

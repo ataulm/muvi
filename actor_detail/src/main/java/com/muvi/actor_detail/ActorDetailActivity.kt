@@ -3,8 +3,6 @@ package com.muvi.actor_detail
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.muvi.actor_detail.ActorDetailViewModel
-import com.muvi.actor_detail.actorDetailModule
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.parameter.parametersOf

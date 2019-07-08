@@ -12,15 +12,15 @@ import kotlinx.coroutines.withContext
 
 internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
-    private val _films = MutableLiveData<FilmSummary>()
-    val films: LiveData<FilmSummary> = _films
+    private val _films = MutableLiveData<List<FilmSummary>>()
+    val films: LiveData<List<FilmSummary>> = _films
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             // TODO: should we map FilmSummary to a UiModel here or use it directly?
             val result = getFilms()
             withContext(Dispatchers.Main) {
-                _films.value = result.first()
+                _films.value = result
             }
         }
     }

@@ -6,8 +6,7 @@ import com.muvi.feed_domain.GetFilmsUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val feedModule = module {
-
+val feedModule = module(override = true) {
     viewModel { FeedViewModel(get()) }
 
     factory<FilmRepository> {
@@ -19,6 +18,6 @@ val feedModule = module {
     }
 
     factory {
-        GetFilmsUseCase(get())
+        GetFilmsUseCase(filmRepository = get())
     }
 }

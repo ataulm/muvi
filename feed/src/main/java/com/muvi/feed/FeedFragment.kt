@@ -29,14 +29,12 @@ internal class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = firstFilmButton
-        feedViewModel.films.observe(this, Observer<FilmSummary> { film ->
-            film?.let {
-                button.text = film.title
-                button.setOnClickListener {
-                    startActivity(intent("com.muvi.film_detail.FilmDetailActivity", film.id))
-                }
-            }
+        val adapter = FilmSummaryAdapter {
+            startActivity(intent("com.muvi.film_detail.FilmDetailActivity", it.id))
+        }
+        recyclerView.adapter = adapter
+        feedViewModel.films.observe(this, Observer<List<FilmSummary>> { films ->
+            films?.let { adapter.submitList(it) }
         })
     }
 
