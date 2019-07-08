@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.muvi.base_domain.FilmSummary
+import com.muvi.navigation.EventObserver
 import com.muvi.navigation.filmDetailIntent
 import kotlinx.android.synthetic.main.fragment_feed.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,11 +31,18 @@ internal class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = FilmSummaryAdapter {
-            startActivity(filmDetailIntent(it.id))
+            // TODO: ditch this
+            feedViewModel.onClickFilmSummary(it)
         }
         recyclerView.adapter = adapter
         feedViewModel.films.observe(this, Observer<List<FilmSummary>> { films ->
             films?.let { adapter.submitList(it) }
+        })
+
+        feedViewModel.events.observe(this, EventObserver {
+            when (it) {
+                is FeedViewModel.Event.NavigateToFilmDetail -> startActivity(filmDetailIntent(it.filmId))
+            }
         })
     }
 }
