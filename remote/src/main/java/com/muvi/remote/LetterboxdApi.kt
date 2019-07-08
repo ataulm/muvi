@@ -23,7 +23,7 @@ data class FilmsResponseModel(val next: String, val items: List<FilmSummaryModel
 data class FilmSummaryModel(
         val id: String,
         val name: String,
-        val releaseYear: Int,
+        val releaseYear: Int?,
         val poster: ImageModel?,
         val directors: List<DirectorModel>
 )
@@ -48,7 +48,7 @@ data class FilmContributionModel(val film: FilmSummaryModel, val characterName: 
 data class FilmModel(
         val id: String,
         val name: String,
-        val releaseYear: Int,
+        val releaseYear: Int?,
         val tagline: String?,
         val description: String?,
         val runTime: Int?,

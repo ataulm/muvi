@@ -3,7 +3,7 @@ package com.muvi.base_domain
 data class FilmSummary(
         val id: String,
         val title: String,
-        val year: Int,
+        val year: Int?,
         val directors: String?,
         val poster: Image?
 )
@@ -11,7 +11,7 @@ data class FilmSummary(
 data class Film(
         val id: String,
         val title: String,
-        val year: Int,
+        val year: Int?,
         val directors: String,
         val poster: Image?,
         val backdrop: Image?,
