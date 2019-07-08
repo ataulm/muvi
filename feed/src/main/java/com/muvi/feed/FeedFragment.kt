@@ -30,12 +30,9 @@ internal class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = FilmSummaryAdapter {
-            // TODO: ditch this
-            feedViewModel.onClickFilmSummary(it)
-        }
+        val adapter = FilmSummaryAdapter()
         recyclerView.adapter = adapter
-        feedViewModel.films.observe(this, Observer<List<FilmSummary>> { films ->
+        feedViewModel.films.observe(this, Observer<List<FilmSummaryUiModel>> { films ->
             films?.let { adapter.submitList(it) }
         })
 

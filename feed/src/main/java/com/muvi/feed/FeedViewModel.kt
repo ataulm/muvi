@@ -13,27 +13,32 @@ import kotlinx.coroutines.withContext
 
 internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
-    private val _films = MutableLiveData<List<FilmSummary>>()
-    val films: LiveData<List<FilmSummary>> = _films
+    private val _films = MutableLiveData<List<FilmSummaryUiModel>>()
+    val films: LiveData<List<FilmSummaryUiModel>> = _films
 
     private val _events = MutableLiveData<EventWrapper<Event>>()
     val events: LiveData<EventWrapper<Event>> = _events
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            // TODO: should we map FilmSummary to a UiModel here or use it directly?
-            val result = getFilms()
+            val uiModels = getFilms().map {
+                FilmSummaryUiModel(it.id, it.title) {
+                    _events.value = EventWrapper(Event.NavigateToFilmDetail(it.id))
+                }
+            }
             withContext(Dispatchers.Main) {
-                _films.value = result
+                _films.value = uiModels
             }
         }
     }
 
-    fun onClickFilmSummary(filmSummary: FilmSummary) {
-        _events.value = EventWrapper(Event.NavigateToFilmDetail(filmSummary.id))
-    }
-
     sealed class Event {
-        data class NavigateToFilmDetail(val filmId: String): Event()
+        data class NavigateToFilmDetail(val filmId: String) : Event()
     }
 }
+
+data class FilmSummaryUiModel(
+        val id: String,
+        val title: String,
+        val onClick: () -> Unit
+)
