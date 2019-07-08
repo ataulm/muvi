@@ -12,7 +12,7 @@ fun filmDetailIntent(filmId: String): Intent {
             .putExtra(EXTRA_FILM_ID, filmId)
 }
 
-fun Intent.extractFilmId() = getStringExtra(EXTRA_FILM_ID)
+fun Intent.extractFilmId(): String = getStringExtra(EXTRA_FILM_ID)
 
 fun actorDetailIntent(actorId: String): Intent {
     return Intent(Intent.ACTION_VIEW)
@@ -20,4 +20,4 @@ fun actorDetailIntent(actorId: String): Intent {
             .putExtra(EXTRA_ACTOR_ID, actorId)
 }
 
-fun Intent.extractActorId() = getStringExtra(EXTRA_ACTOR_ID)
+fun Intent.extractActorId(): String = getStringExtra(EXTRA_ACTOR_ID)
