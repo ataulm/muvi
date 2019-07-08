@@ -11,6 +11,9 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitKotlinCoroutinesAdapter
     implementation libraries.retrofitMoshi
+    implementation libraries.roomKtx
+    implementation libraries.roomRuntime
 
     kapt libraries.moshiKotlinCodegen
+    kapt libraries.roomCompiler
 }
