@@ -7,9 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.muvi.base_domain.FilmSummary
 
-internal class FilmSummaryAdapter(private val onClick: (FilmSummary) -> Unit) : ListAdapter<FilmSummary, FilmSummaryAdapter.ViewHolder>(Differ) {
+internal class FilmSummaryAdapter : ListAdapter<FilmSummaryUiModel, FilmSummaryAdapter.ViewHolder>(Differ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_film_summary, parent, false)
@@ -19,15 +18,15 @@ internal class FilmSummaryAdapter(private val onClick: (FilmSummary) -> Unit) : 
         val filmSummary = getItem(position)
         (holder.itemView as TextView).apply {
             text = filmSummary.title
-            setOnClickListener { onClick(filmSummary) }
+            setOnClickListener { filmSummary.onClick() }
         }
     }
 
-    object Differ : DiffUtil.ItemCallback<FilmSummary>() {
+    object Differ : DiffUtil.ItemCallback<FilmSummaryUiModel>() {
 
-        override fun areItemsTheSame(oldItem: FilmSummary, newItem: FilmSummary) = oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: FilmSummaryUiModel, newItem: FilmSummaryUiModel) = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: FilmSummary, newItem: FilmSummary) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: FilmSummaryUiModel, newItem: FilmSummaryUiModel) = oldItem == newItem
     }
 
     internal class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
