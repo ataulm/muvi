@@ -17,7 +17,7 @@ data class DbFilmSummary(
 )
 
 data class DbImageSize(
-        val width: Int,
-        val height: Int,
-        val url: String
+        @ColumnInfo(name = "width") val width: Int,
+        @ColumnInfo(name = "height") val height: Int,
+        @ColumnInfo(name = "url") val url: String
 )
