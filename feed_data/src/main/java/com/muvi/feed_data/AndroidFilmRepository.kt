@@ -1,5 +1,6 @@
 package com.muvi.feed_data
 
+import android.content.Context
 import com.muvi.base_domain.FilmSummary
 import com.muvi.base_domain.Image
 import com.muvi.feed_domain.FilmRepository
@@ -7,7 +8,10 @@ import com.muvi.remote.Clock
 import com.muvi.remote.LetterboxdApi
 import com.muvi.remote.LetterboxdApiFactory
 
-class AndroidFilmRepository internal constructor(private val letterboxdApi: LetterboxdApi) : FilmRepository {
+class AndroidFilmRepository internal constructor(
+        private val letterboxdApi: LetterboxdApi,
+        private val feedDao: FeedDao
+) : FilmRepository {
 
     override suspend fun getFilms(): List<FilmSummary> {
         return letterboxdApi.films().let { filmsResponseModel ->
@@ -30,12 +34,13 @@ class AndroidFilmRepository internal constructor(private val letterboxdApi: Lett
 
     companion object {
 
-        fun create(apiKey: String, apiSecret: String, enableHttpLogging: Boolean): AndroidFilmRepository {
+        fun create(context: Context, apiKey: String, apiSecret: String, enableHttpLogging: Boolean): AndroidFilmRepository {
             val clock = object : Clock {
                 override fun currentTimeMillis(): Long = System.currentTimeMillis()
             }
             val api = LetterboxdApiFactory(apiKey, apiSecret, clock, enableHttpLogging).remoteLetterboxdApi()
-            return AndroidFilmRepository(api)
+            val feedDao = FeedDatabase.createFeedDao(context)
+            return AndroidFilmRepository(api, feedDao)
         }
     }
 }

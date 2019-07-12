@@ -1,0 +1,7 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation libraries.kotlinStdLib
+    implementation libraries.moshi
+    implementation libraries.roomCommon
+}
