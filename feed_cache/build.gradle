@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(':base_data')
+    implementation project(':base_domain')
+    implementation project(':feed_data')
+
+    implementation libraries.koin
+    implementation libraries.koinAndroid
+    implementation libraries.roomKtx
+    implementation libraries.roomRuntime
+
+    kapt libraries.roomCompiler
+}

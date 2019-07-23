@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation project(':base_data')
     implementation project(':feed_domain')
-    implementation project(':remote')
+    implementation project(':letterboxd_api')
 
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib

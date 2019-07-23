@@ -3,8 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 dependencies {
+    implementation project(':feed_cache')
     implementation project(':feed_data')
     implementation project(':feed_domain')
+    implementation project(':feed_remote')
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat
@@ -13,4 +15,5 @@ dependencies {
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel
+    implementation libraries.roomRuntime
 }

@@ -4,7 +4,7 @@ data class FilmSummary(
         val id: String,
         val title: String,
         val year: Int?,
-        val directors: String?,
+        val directors: List<String>,
         val poster: Image?
 )
 

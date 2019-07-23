@@ -40,6 +40,7 @@ ext {
             retrofitMoshi                  : 'com.squareup.retrofit2:converter-moshi:2.4.0',
             roomCommon                     : "androidx.room:room-common:${versions.room}",
             roomCompiler                   : "androidx.room:room-compiler:${versions.room}",
+            roomKtx                        : "androidx.room:room-ktx:${versions.room}",
             roomRuntime                    : "androidx.room:room-runtime:${versions.room}"
     ]
 }

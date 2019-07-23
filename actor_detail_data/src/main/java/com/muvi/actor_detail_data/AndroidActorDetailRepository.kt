@@ -21,7 +21,7 @@ class AndroidActorDetailRepository internal constructor(private val letterboxdAp
                         id = filmContributionModel.film.id,
                         title = filmContributionModel.film.name,
                         year = filmContributionModel.film.releaseYear,
-                        directors = filmContributionModel.film.directors.joinToString(separator = " & ") { director -> director.name },
+                        directors = filmContributionModel.film.directors.map { director -> director.name },
                         poster = filmContributionModel.film.poster?.image()
                 )
         ) })
