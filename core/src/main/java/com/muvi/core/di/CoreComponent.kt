@@ -10,10 +10,6 @@ import javax.inject.Singleton
 ])
 interface CoreComponent {
 
-    @Component.Builder interface Builder {
-        fun build(): CoreComponent
-    }
-
     fun context(): Context
 
 }

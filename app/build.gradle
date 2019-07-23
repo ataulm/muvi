@@ -29,4 +29,7 @@ dependencies {
     implementation libraries.koinViewModel
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
+
+    implementation libraries.dagger
+    kapt libraries.daggerCompiler
 }
