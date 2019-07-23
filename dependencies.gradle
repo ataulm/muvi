@@ -6,6 +6,7 @@ ext {
                     target : 28
             ],
             androidXLifecycle              : '2.1.0-alpha04',
+            dagger                         : '2.16',
             javaCompile                    : '8',
             koin                           : '2.0.0',
             kotlin                         : '1.3.31',
@@ -25,6 +26,9 @@ ext {
             androidxAppCompat              : 'androidx.appcompat:appcompat:1.0.2',
             androidxLifecycleViewmodelKtx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidXLifecycle}",
             androidxRecyclerView           : 'androidx.recyclerview:recyclerview:1.0.0',
+            dagger                         : "com.google.dagger:dagger:${versions.dagger}",
+            daggerCompiler                 : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            daggerProcessor                : "com.google.dagger:dagger-android-processor:${versions.dagger}",
             koin                           : "org.koin:koin-core:${versions.koin}",
             koinAndroid                    : "org.koin:koin-android:${versions.koin}",
             koinScope                      : "org.koin:koin-androidx-scope:${versions.koin}",

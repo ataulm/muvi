@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    implementation project(':core')
     implementation project(':feed')
 
     implementation libraries.androidxAppCompat
