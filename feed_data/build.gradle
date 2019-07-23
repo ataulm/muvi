@@ -7,6 +7,7 @@ dependencies {
     implementation project(':feed_domain')
     implementation project(':letterboxd_api')
 
+    implementation libraries.javaxInject
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi

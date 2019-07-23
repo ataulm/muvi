@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 dependencies {
+    implementation project(':core')
     implementation project(':feed_cache')
     implementation project(':feed_data')
     implementation project(':feed_domain')
@@ -12,8 +14,11 @@ dependencies {
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx
     implementation libraries.androidxRecyclerView
+    implementation libraries.dagger
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel
     implementation libraries.roomRuntime
+
+    kapt libraries.daggerCompiler
 }

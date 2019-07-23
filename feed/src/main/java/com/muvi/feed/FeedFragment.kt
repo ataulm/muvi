@@ -6,28 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.muvi.feed_cache.feedCacheModule
-import com.muvi.feed_remote.feedRemoteModule
+import com.muvi.feed.di.inject
 import com.muvi.navigation.EventObserver
 import com.muvi.navigation.filmDetailIntent
 import kotlinx.android.synthetic.main.fragment_feed.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
+import javax.inject.Inject
 
 internal class FeedFragment : Fragment() {
 
-    private val feedViewModel: FeedViewModel by viewModel()
+    @Inject lateinit var feedViewModel: FeedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(feedModule, feedCacheModule, feedRemoteModule)
+        inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = FilmSummaryAdapter()
@@ -38,7 +43,8 @@ internal class FeedFragment : Fragment() {
 
         feedViewModel.events.observe(this, EventObserver {
             when (it) {
-                is FeedViewModel.Event.NavigateToFilmDetail -> startActivity(filmDetailIntent(it.filmId))
+                is FeedViewModel.Event.NavigateToFilmDetail ->
+                    startActivity(filmDetailIntent(it.filmId))
             }
         })
     }

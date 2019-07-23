@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.muvi.base_domain.FilmSummary
 import com.muvi.feed_domain.GetFilmsUseCase
 import com.muvi.navigation.EventWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
+class FeedViewModel @Inject constructor(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
     private val _films = MutableLiveData<List<FilmSummaryUiModel>>()
     val films: LiveData<List<FilmSummaryUiModel>> = _films
