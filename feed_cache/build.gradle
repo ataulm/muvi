@@ -7,6 +7,7 @@ dependencies {
     implementation project(':base_domain')
     implementation project(':feed_data')
 
+    implementation libraries.dagger
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.roomKtx

@@ -4,8 +4,9 @@ import com.muvi.base_domain.FilmSummary
 import com.muvi.base_domain.Image
 import com.muvi.feed_data.FeedRemote
 import com.muvi.remote.LetterboxdApi
+import javax.inject.Inject
 
-internal class LetterboxdFeedRemote(
+internal class LetterboxdFeedRemote @Inject constructor(
         private val letterboxdApi: LetterboxdApi
 ) : FeedRemote {
 
