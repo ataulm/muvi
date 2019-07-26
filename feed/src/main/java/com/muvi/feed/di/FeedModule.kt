@@ -21,7 +21,8 @@ class FeedModule {
         AndroidFilmRepository(feedRemote, feedCache)
 
     @Provides
-    fun providesGetFilmsUseCase(filmRepository: FilmRepository) = GetFilmsUseCase(filmRepository)
+    fun providesGetFilmsUseCase(filmRepository: FilmRepository): GetFilmsUseCase =
+        GetFilmsUseCase(filmRepository)
 
     @Module
     interface ViewModelModule {

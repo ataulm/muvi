@@ -1,12 +1,13 @@
-package com.muvi.feed_cache
+package com.muvi.feed_cache.di
 
 import android.content.Context
 import androidx.room.Room
+import com.muvi.feed_cache.FeedDao
+import com.muvi.feed_cache.FeedDatabase
+import com.muvi.feed_cache.RoomFeedCache
 import com.muvi.feed_data.FeedCache
 import dagger.Module
 import dagger.Provides
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
 import javax.inject.Singleton
 
 private const val DATABASE_NAME = "feed_database"
@@ -19,7 +20,7 @@ class FeedCacheModule {
         return feedDatabase.feedDao()
     }
 
-    @Singleton
+    @FeedCacheScope
     @Provides
     internal fun providesFeedDatabase(context: Context): FeedDatabase {
         return Room.databaseBuilder(
