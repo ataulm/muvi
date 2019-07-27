@@ -4,7 +4,7 @@ import com.muvi.base_domain.FilmSummary
 import com.muvi.feed_domain.FilmRepository
 import javax.inject.Inject
 
-class AndroidFilmRepository @Inject constructor(
+internal class AndroidFilmRepository @Inject constructor(
         private val feedRemote: FeedRemote,
         private val feedCache: FeedCache
 ) : FilmRepository {

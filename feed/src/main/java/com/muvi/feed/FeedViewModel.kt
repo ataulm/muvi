@@ -1,9 +1,6 @@
 package com.muvi.feed
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.muvi.feed_domain.GetFilmsUseCase
 import com.muvi.navigation.EventWrapper
 import kotlinx.coroutines.Dispatchers
@@ -42,3 +39,9 @@ data class FilmSummaryUiModel(
         val title: String,
         val onClick: () -> Unit
 )
+
+internal class FeedViewModelFactory @Inject constructor(private val getFilmsUseCase: GetFilmsUseCase) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(modelClass: Class<T>) = FeedViewModel(getFilmsUseCase) as T
+}

@@ -13,5 +13,6 @@ dependencies {
     implementation libraries.roomKtx
     implementation libraries.roomRuntime
 
+    kapt libraries.daggerCompiler
     kapt libraries.roomCompiler
 }

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(':base_data')
@@ -10,4 +11,6 @@ dependencies {
     implementation libraries.dagger
     implementation libraries.koin
     implementation libraries.koinAndroid
+
+    kapt libraries.daggerCompiler
 }

@@ -7,9 +7,7 @@ import com.muvi.base_domain.FilmSummary
 import com.muvi.base_domain.Image
 import com.muvi.feed_data.FeedCache
 
-internal class RoomFeedCache(
-        private val feedDao: FeedDao
-) : FeedCache {
+internal class RoomFeedCache(private val feedDao: FeedDao) : FeedCache {
 
     override suspend fun getFeed(): List<FilmSummary> {
         return feedDao.getFilms().map { dbFilmSummary ->
@@ -32,7 +30,8 @@ internal class RoomFeedCache(
                     filmSummary.title,
                     filmSummary.year,
                     filmSummary.directors,
-                    DbImage(sizes = filmSummary.poster?.sizes?.map { DbImageSize(it.width, it.height, it.url) } ?: emptyList())
+                    DbImage(sizes = filmSummary.poster?.sizes?.map { DbImageSize(it.width, it.height, it.url) }
+                            ?: emptyList())
             )
         })
     }

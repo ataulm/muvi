@@ -7,6 +7,7 @@ dependencies {
     implementation project(':feed_domain')
     implementation project(':letterboxd_api')
 
+    implementation libraries.dagger
     implementation libraries.javaxInject
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
@@ -16,6 +17,7 @@ dependencies {
     implementation libraries.retrofitMoshi
     implementation libraries.roomRuntime
 
+    kapt libraries.daggerCompiler
     kapt libraries.moshiKotlinCodegen
     kapt libraries.roomCompiler
 }

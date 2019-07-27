@@ -1,25 +1,52 @@
 package com.muvi.feed.di
 
-import com.muvi.core.di.BaseComponent
+import androidx.lifecycle.ViewModelProviders
 import com.muvi.core.di.CoreComponent
-import com.muvi.core.di.scope.FragmentScope
 import com.muvi.feed.FeedFragment
-import com.muvi.feed_domain.FilmRepository
-import com.muvi.feed_remote.FeedRemoteModule
+import com.muvi.feed.FeedViewModel
+import com.muvi.feed.FeedViewModelFactory
+import com.muvi.feed_cache.di.FeedCacheModule
+import com.muvi.feed_data.di.FeedDataModule
+import com.muvi.feed_remote.di.FeedRemoteModule
+import dagger.BindsInstance
 import dagger.Component
+import dagger.Module
+import dagger.Provides
+import javax.inject.Scope
 
-@FragmentScope
+@Scope
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+annotation class FeedScope
+
+@FeedScope
 @Component(
-    modules = [FeedModule::class, FeedRemoteModule::class],
-    dependencies = [CoreComponent::class, FeedDatabaseComponent::class]
+        modules = [
+            FeedModule::class,
+            FeedDataModule::class,
+            FeedCacheModule::class,
+            FeedRemoteModule::class
+        ],
+        dependencies = [CoreComponent::class]
 )
-internal interface FeedComponent : BaseComponent<FeedFragment> {
+internal interface FeedComponent {
+
+    fun inject(fragment: FeedFragment)
 
     @Component.Builder
     interface Builder {
-        fun build(): FeedComponent
-        fun feedDatabaseComponent(feedDatabaseComponent: FeedDatabaseComponent): Builder
-        fun feedRemoteModule(feedRemoteModule: FeedRemoteModule): Builder
+
+        @BindsInstance
+        fun fragment(fragment: FeedFragment): Builder
         fun coreComponent(module: CoreComponent): Builder
+        fun build(): FeedComponent
     }
+}
+
+@Module
+internal object FeedModule {
+
+    @JvmStatic
+    @Provides
+    fun viewModel(feedFragment: FeedFragment, viewModelFactory: FeedViewModelFactory) =
+            ViewModelProviders.of(feedFragment, viewModelFactory).get(FeedViewModel::class.java)
 }

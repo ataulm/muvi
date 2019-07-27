@@ -25,6 +25,7 @@ ext {
                     kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
             androidxAppCompat              : 'androidx.appcompat:appcompat:1.0.2',
+            androidxLifecycleExtensions    : "androidx.lifecycle:lifecycle-extensions:${versions.androidXLifecycle}",
             androidxLifecycleViewmodelKtx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidXLifecycle}",
             androidxRecyclerView           : 'androidx.recyclerview:recyclerview:1.0.0',
             dagger                         : "com.google.dagger:dagger:${versions.dagger}",
