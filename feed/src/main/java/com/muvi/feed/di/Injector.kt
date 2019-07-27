@@ -4,10 +4,9 @@ import com.muvi.core.di.coreComponent
 import com.muvi.feed.FeedFragment
 
 internal fun inject(fragment: FeedFragment) {
-    // TODO DaggerMyFeedComponent
-//    DaggerFeedComponent
-//        .builder()
-//        .coreComponent(fragment.coreComponent())
-//        .build()
-//        .inject(fragment)
+    DaggerFeedComponent.builder()
+            .coreComponent(fragment.coreComponent())
+            .fragment(fragment)
+            .build()
+            .inject(fragment)
 }

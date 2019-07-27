@@ -16,8 +16,13 @@ class MuViApplication : Application(), CoreComponentProvider {
     override fun onCreate() {
         super.onCreate()
 
+        startKoin {
+            androidContext(this@MuViApplication)
+        }
+
         coreComponent = DaggerCoreComponent
-            .builder()
-            .build()
+                .builder()
+                .application(this)
+                .build()
     }
 }
