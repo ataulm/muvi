@@ -39,17 +39,13 @@ class LetterboxdApiFactory(private val apiKey: String,
     }
 }
 
-private class AddApiKeyQueryParameterInterceptor(
-    private val apiKey: String,
-    private val clock: Clock
-) : Interceptor {
+private class AddApiKeyQueryParameterInterceptor(private val apiKey: String, private val clock: Clock) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val url = chain.request().url().newBuilder()
                 .addQueryParameter("apikey", apiKey)
                 .addQueryParameter("nonce", UUID.randomUUID().toString())
-                .addQueryParameter("timestamp",
-                    TimeUnit.MILLISECONDS.toSeconds(clock.currentTimeMillis()).toString())
+                .addQueryParameter("timestamp", TimeUnit.MILLISECONDS.toSeconds(clock.currentTimeMillis()).toString())
                 .build()
         val request = chain.request().newBuilder().url(url).build()
         return chain.proceed(request)

@@ -4,8 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-
+    implementation libraries.androidxFragment
     implementation libraries.dagger
+
     kapt libraries.daggerCompiler
-    implementation "androidx.fragment:fragment:1.1.0-rc03"
 }

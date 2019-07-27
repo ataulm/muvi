@@ -14,25 +14,19 @@ import javax.inject.Inject
 
 internal class FeedFragment : Fragment() {
 
-    @Inject lateinit var feedViewModel: FeedViewModel
+    @Inject
+    lateinit var feedViewModel: FeedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         inject(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = FilmSummaryAdapter()
@@ -43,8 +37,7 @@ internal class FeedFragment : Fragment() {
 
         feedViewModel.events.observe(this, EventObserver {
             when (it) {
-                is FeedViewModel.Event.NavigateToFilmDetail ->
-                    startActivity(filmDetailIntent(it.filmId))
+                is FeedViewModel.Event.NavigateToFilmDetail -> startActivity(filmDetailIntent(it.filmId))
             }
         })
     }

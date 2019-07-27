@@ -7,7 +7,9 @@ import com.muvi.base_domain.FilmSummary
 import com.muvi.base_domain.Image
 import com.muvi.feed_data.FeedCache
 
-internal class RoomFeedCache(private val feedDao: FeedDao) : FeedCache {
+internal class RoomFeedCache(
+        private val feedDao: FeedDao
+) : FeedCache {
 
     override suspend fun getFeed(): List<FilmSummary> {
         return feedDao.getFilms().map { dbFilmSummary ->

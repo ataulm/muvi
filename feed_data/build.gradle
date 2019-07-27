@@ -8,7 +8,6 @@ dependencies {
     implementation project(':letterboxd_api')
 
     implementation libraries.dagger
-    implementation libraries.javaxInject
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
