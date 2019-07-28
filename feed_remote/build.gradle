@@ -7,6 +7,7 @@ dependencies {
     implementation project(':letterboxd_api')
 
     implementation libraries.dagger
+    implementation libraries.kotlinStdLib
 
     kapt libraries.daggerCompiler
 }
