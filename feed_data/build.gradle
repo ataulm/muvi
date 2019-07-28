@@ -3,20 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-    implementation project(':base_data')
     implementation project(':feed_domain')
-    implementation project(':letterboxd_api')
 
     implementation libraries.dagger
     implementation libraries.kotlinCoroutinesCore
-    implementation libraries.kotlinStdLib
-    implementation libraries.moshi
-    implementation libraries.retrofit
-    implementation libraries.retrofitKotlinCoroutinesAdapter
-    implementation libraries.retrofitMoshi
-    implementation libraries.roomRuntime
 
     kapt libraries.daggerCompiler
-    kapt libraries.moshiKotlinCodegen
-    kapt libraries.roomCompiler
 }
