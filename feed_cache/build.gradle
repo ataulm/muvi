@@ -8,8 +8,6 @@ dependencies {
     implementation project(':feed_data')
 
     implementation libraries.dagger
-    implementation libraries.koin
-    implementation libraries.koinAndroid
     implementation libraries.roomKtx
     implementation libraries.roomRuntime
 
