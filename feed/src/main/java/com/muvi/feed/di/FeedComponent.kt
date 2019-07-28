@@ -16,13 +16,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import javax.inject.Scope
 
-@Scope
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class FeedScope
-
-@FeedScope
 @Component(
         modules = [
             FeedModule::class,
