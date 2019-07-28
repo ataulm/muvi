@@ -16,10 +16,6 @@ dependencies {
     implementation libraries.androidxLifecycleViewmodelKtx
     implementation libraries.androidxRecyclerView
     implementation libraries.dagger
-    implementation libraries.koin
-    implementation libraries.koinAndroid
-    implementation libraries.koinViewModel
-    implementation libraries.roomRuntime
 
     kapt libraries.daggerCompiler
 }
