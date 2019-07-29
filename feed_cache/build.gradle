@@ -7,10 +7,10 @@ dependencies {
     implementation project(':base_domain')
     implementation project(':feed_data')
 
-    implementation libraries.koin
-    implementation libraries.koinAndroid
+    implementation libraries.dagger
     implementation libraries.roomKtx
     implementation libraries.roomRuntime
 
+    kapt libraries.daggerCompiler
     kapt libraries.roomCompiler
 }

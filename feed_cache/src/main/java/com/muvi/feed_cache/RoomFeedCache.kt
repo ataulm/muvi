@@ -32,7 +32,8 @@ internal class RoomFeedCache(
                     filmSummary.title,
                     filmSummary.year,
                     filmSummary.directors,
-                    DbImage(sizes = filmSummary.poster?.sizes?.map { DbImageSize(it.width, it.height, it.url) } ?: emptyList())
+                    DbImage(sizes = filmSummary.poster?.sizes?.map { DbImageSize(it.width, it.height, it.url) }
+                            ?: emptyList())
             )
         })
     }

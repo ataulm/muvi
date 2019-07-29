@@ -3,15 +3,16 @@ package com.muvi.feed
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.muvi.base_domain.FilmSummary
 import com.muvi.feed_domain.GetFilmsUseCase
 import com.muvi.navigation.EventWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-internal class FeedViewModel(private val getFilms: GetFilmsUseCase) : ViewModel() {
+class FeedViewModel @Inject constructor(private val getFilms: GetFilmsUseCase) : ViewModel() {
 
     private val _films = MutableLiveData<List<FilmSummaryUiModel>>()
     val films: LiveData<List<FilmSummaryUiModel>> = _films
@@ -42,3 +43,9 @@ data class FilmSummaryUiModel(
         val title: String,
         val onClick: () -> Unit
 )
+
+internal class FeedViewModelFactory @Inject constructor(private val getFilmsUseCase: GetFilmsUseCase) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(modelClass: Class<T>) = FeedViewModel(getFilmsUseCase) as T
+}

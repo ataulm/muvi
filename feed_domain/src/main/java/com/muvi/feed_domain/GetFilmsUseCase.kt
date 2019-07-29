@@ -1,6 +1,8 @@
 package com.muvi.feed_domain
 
-class GetFilmsUseCase(
+import javax.inject.Inject
+
+class GetFilmsUseCase @Inject constructor(
         private val filmRepository: FilmRepository
 ) {
 
