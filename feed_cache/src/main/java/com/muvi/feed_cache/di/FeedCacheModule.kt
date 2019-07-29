@@ -13,17 +13,24 @@ private const val DATABASE_NAME = "feed_database"
 @Module
 object FeedCacheModule {
 
+    @Volatile
+    private var feedDatabase: FeedDatabase? = null
+
     @JvmStatic
     @Provides
     fun feedCache(context: Context): FeedCache {
-        // TODO: this database should be singleton in the app
-        // we could manage the singleton ourselves, but cooler if we can do with dagger
-        val database = Room.databaseBuilder(
-                context,
-                FeedDatabase::class.java,
-                DATABASE_NAME
-        ).build()
+        val database = feedDatabase(context)
         val feedDao = database.feedDao()
         return RoomFeedCache(feedDao)
+    }
+
+    private fun feedDatabase(context: Context): FeedDatabase {
+        return feedDatabase ?: synchronized(this) {
+            feedDatabase ?: Room.databaseBuilder(
+                    context,
+                    FeedDatabase::class.java,
+                    DATABASE_NAME
+            ).build().also { feedDatabase = it }
+        }
     }
 }
