@@ -1,6 +1,6 @@
 package com.muvi.feed_data.di
 
-import com.muvi.feed_data.AndroidFilmRepository
+import com.muvi.feed_data.CacheAndRemoteFilmRepository
 import com.muvi.feed_data.FeedCache
 import com.muvi.feed_data.FeedRemote
 import com.muvi.feed_domain.FilmRepository
@@ -13,6 +13,6 @@ object FeedDataModule {
     @JvmStatic
     @Provides
     fun filmRepository(feedRemote: FeedRemote, feedCache: FeedCache): FilmRepository {
-        return AndroidFilmRepository(feedRemote, feedCache)
+        return CacheAndRemoteFilmRepository(feedRemote, feedCache)
     }
 }
