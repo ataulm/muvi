@@ -31,7 +31,6 @@ ext {
             dagger                         : "com.google.dagger:dagger:${versions.dagger}",
             daggerCompiler                 : "com.google.dagger:dagger-compiler:${versions.dagger}",
             daggerProcessor                : "com.google.dagger:dagger-android-processor:${versions.dagger}",
-            javaxInject                    : 'javax.inject:javax.inject:1',
             koin                           : "org.koin:koin-core:${versions.koin}",
             koinAndroid                    : "org.koin:koin-android:${versions.koin}",
             koinScope                      : "org.koin:koin-androidx-scope:${versions.koin}",
