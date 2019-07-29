@@ -3,6 +3,7 @@ apply plugin: 'kotlin'
 dependencies {
     api project(':base_domain')
 
+    implementation libraries.dagger
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
 }

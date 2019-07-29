@@ -1,6 +1,8 @@
 package com.muvi.film_detail.domain
 
-class GetFilmDetailUseCase(
+import javax.inject.Inject
+
+class GetFilmDetailUseCase @Inject constructor(
         private val filmDetailRepository: FilmDetailRepository
 ) {
 

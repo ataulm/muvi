@@ -5,12 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.muvi.base_domain.Film
+import com.muvi.film_detail.di.inject
 import com.muvi.navigation.actorDetailIntent
 import com.muvi.navigation.extractFilmId
 import kotlinx.android.synthetic.main.activity_film_detail.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
-import org.koin.core.parameter.parametersOf
+import javax.inject.Inject
 
 /**
  * TODO: show:
@@ -28,11 +27,12 @@ import org.koin.core.parameter.parametersOf
  */
 class FilmDetailActivity : AppCompatActivity() {
 
-    private val filmDetailViewModel: FilmDetailViewModel by viewModel { parametersOf(intent.extractFilmId()) }
+    @Inject
+    internal lateinit var filmDetailViewModel: FilmDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(filmDetailModule)
+        inject(this)
 
         setContentView(R.layout.activity_film_detail)
 
@@ -48,5 +48,6 @@ class FilmDetailActivity : AppCompatActivity() {
                 }
             }
         })
+        filmDetailViewModel.loadFilm(intent.extractFilmId())
     }
 }
