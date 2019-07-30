@@ -9,6 +9,7 @@ dependencies {
     implementation project(':feed_data')
     implementation project(':feed_domain')
     implementation project(':feed_remote')
+    compileOnly project(':letterboxd_api')
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat

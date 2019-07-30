@@ -1,6 +1,5 @@
 package com.muvi.actor_detail
 
-import com.muvi.BuildConfig
 import com.muvi.actor_detail_data.AndroidActorDetailRepository
 import com.muvi.actor_detail_domain.ActorDetailRepository
 import com.muvi.actor_detail_domain.GetActorDetailUseCase
