@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
+    implementation project(':letterboxd_api')
     implementation libraries.androidxFragment
     implementation libraries.dagger
 

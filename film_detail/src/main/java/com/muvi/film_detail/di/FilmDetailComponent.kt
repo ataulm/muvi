@@ -1,16 +1,12 @@
 package com.muvi.film_detail.di
 
 import androidx.lifecycle.ViewModelProviders
-import com.muvi.BuildConfig
 import com.muvi.core.di.CoreComponent
 import com.muvi.film_detail.FilmDetailActivity
 import com.muvi.film_detail.FilmDetailViewModel
 import com.muvi.film_detail.FilmDetailViewModelFactory
 import com.muvi.film_detail_data.di.FilmDetailDataModule
-import com.muvi.film_detail_remote.DebugMode
 import com.muvi.film_detail_remote.FilmDetailRemoteModule
-import com.muvi.film_detail_remote.LetterboxdApiKey
-import com.muvi.film_detail_remote.LetterboxdApiSecret
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -44,21 +40,6 @@ internal object FilmDetailModule {
 
     @JvmStatic
     @Provides
-    fun viewModel(feedFragment: FilmDetailActivity, viewModelFactory: FilmDetailViewModelFactory) =
-            ViewModelProviders.of(feedFragment, viewModelFactory).get(FilmDetailViewModel::class.java)
-
-    @JvmStatic
-    @LetterboxdApiKey
-    @Provides
-    fun letterboxdApiKey() = BuildConfig.API_KEY
-
-    @JvmStatic
-    @LetterboxdApiSecret
-    @Provides
-    fun letterboxdApiSecret() = BuildConfig.API_SECRET
-
-    @JvmStatic
-    @DebugMode
-    @Provides
-    fun debugMode() = BuildConfig.DEBUG
+    fun viewModel(filmDetailActivity: FilmDetailActivity, viewModelFactory: FilmDetailViewModelFactory) =
+            ViewModelProviders.of(filmDetailActivity, viewModelFactory).get(FilmDetailViewModel::class.java)
 }
