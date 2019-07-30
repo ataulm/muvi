@@ -39,8 +39,6 @@ internal object CoreModule {
         override fun currentTimeMillis(): Long = System.currentTimeMillis()
     }
 
-    // TODO: we could break this up better - e.g. share OkHttpClient instance across app
-    // that would give us two good scopes to showcase - per feature (e.g. RoomFeedDB) and per app
     @JvmStatic
     @Provides
     fun letterboxdApi(@LetterboxdApiKey apiKey: String, @LetterboxdApiSecret apiSecret: String,
