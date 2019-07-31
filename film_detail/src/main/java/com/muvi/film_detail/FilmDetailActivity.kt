@@ -3,6 +3,7 @@ package com.muvi.film_detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.muvi.base_domain.Film
 import com.muvi.film_detail.di.inject
 import com.muvi.film_detail.ui.FilmDetailAdapter
@@ -25,6 +26,8 @@ class FilmDetailActivity : AppCompatActivity() {
 
         val adapter = FilmDetailAdapter()
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
         filmDetailViewModel.film.observe(this, Observer<Film> { film ->
             film?.toUiModel()?.let {
                 adapter.submitList(it)
