@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.muvi.base_domain.Image
 import com.muvi.film_detail.R
 import kotlinx.android.synthetic.main.film_detail_item_character.view.*
 import kotlinx.android.synthetic.main.film_detail_item_header.view.*
@@ -44,6 +46,8 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
 
         data class Header(
                 val title: CharSequence,
+                val backdrop: Image?,
+                val poster: Image?,
                 val directors: CharSequence,
                 val year: CharSequence?,
                 val description: CharSequence?
@@ -58,8 +62,15 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
 }
 
 private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
+    val backdrop = header.backdrop?.sizes?.firstOrNull()
+    val poster = header.poster?.sizes?.firstOrNull()
+    val glide = Glide.with(itemView)
+    glide.load(backdrop?.url).into(itemView.backdropImageView)
+    glide.load(poster?.url).into(itemView.posterImageView)
     itemView.titleTextView.text = header.title
-    // TODO: bind the rest
+    itemView.directorsTextView.text = header.directors
+    itemView.yearTextView.text = header.year
+    itemView.descriptionTextView.text = header.description
 }
 
 private fun BoringViewHolder.bind(character: FilmDetailAdapter.Item.Character) {

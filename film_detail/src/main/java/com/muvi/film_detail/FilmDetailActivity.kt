@@ -35,6 +35,8 @@ class FilmDetailActivity : AppCompatActivity() {
     private fun Film.toUiModel(): List<FilmDetailAdapter.Item> {
         val header = FilmDetailAdapter.Item.Header(
                 title = title,
+                backdrop = backdrop,
+                poster = poster,
                 directors = directors(),
                 year = year?.toString(),
                 description = description
