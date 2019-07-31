@@ -51,8 +51,8 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
                 val title: CharSequence,
                 val backdrop: Image?,
                 val poster: Image?,
-                val directors: CharSequence,
                 val year: CharSequence?,
+                val directors: CharSequence?,
                 val description: CharSequence?
         ) : Item()
 
@@ -71,7 +71,7 @@ private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
     glide.load(backdrop?.url).into(itemView.backdropImageView)
     glide.load(poster?.url).into(itemView.posterImageView)
     itemView.titleTextView.text = header.title
-    itemView.directorLabelTextView.visibility = if (header.directors.isEmpty()) GONE else VISIBLE
+    itemView.directorLabelTextView.visibility = if (header.directors == null) GONE else VISIBLE
     itemView.directorsTextView.textOrGone(header.directors)
     itemView.yearTextView.textOrGone(header.year)
     itemView.descriptionTextView.textOrGone(header.description)

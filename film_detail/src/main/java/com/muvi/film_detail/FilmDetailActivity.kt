@@ -52,7 +52,7 @@ class FilmDetailActivity : AppCompatActivity() {
     }
 
     private fun Film.directors() = when (directors.size) {
-        0 -> "Mr Director" // TODO: should be nullable in this case I guess
+        0 -> null
         1 -> directors[0]
         else -> {
             val firstLot = directors.subList(0, directors.size - 1).joinToString(separator = ", ")
