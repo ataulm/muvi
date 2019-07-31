@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <!--    TODO: make it prettier-->
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
     <TextView
         android:id="@+id/characterTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Miles Morales / Spider-Man (voice)" />
 
     <TextView
         android:id="@+id/actorTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/characterTextView" />
+        app:layout_constraintTop_toBottomOf="@id/characterTextView"
+        tools:text="Shameik Moore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
