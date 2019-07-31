@@ -63,7 +63,7 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
 
 private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
     val backdrop = header.backdrop?.sizes?.firstOrNull()
-    val poster = header.poster?.sizes?.firstOrNull()
+    val poster = header.poster?.sizes?.lastOrNull()
     val glide = Glide.with(itemView)
     glide.load(backdrop?.url).into(itemView.backdropImageView)
     glide.load(poster?.url).into(itemView.posterImageView)
