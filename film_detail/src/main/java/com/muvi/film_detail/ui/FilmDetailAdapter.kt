@@ -2,7 +2,10 @@ package com.muvi.film_detail.ui
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -68,9 +71,15 @@ private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
     glide.load(backdrop?.url).into(itemView.backdropImageView)
     glide.load(poster?.url).into(itemView.posterImageView)
     itemView.titleTextView.text = header.title
-    itemView.directorsTextView.text = header.directors
-    itemView.yearTextView.text = header.year
-    itemView.descriptionTextView.text = header.description
+    itemView.directorLabelTextView.visibility = if (header.directors.isEmpty()) GONE else VISIBLE
+    itemView.directorsTextView.textOrGone(header.directors)
+    itemView.yearTextView.textOrGone(header.year)
+    itemView.descriptionTextView.textOrGone(header.description)
+}
+
+private fun TextView.textOrGone(newText: CharSequence?) {
+    text = newText
+    visibility = if (newText == null) GONE else VISIBLE
 }
 
 private fun BoringViewHolder.bind(character: FilmDetailAdapter.Item.Character) {
