@@ -51,7 +51,6 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
                 val title: CharSequence,
                 val backdrop: Image?,
                 val poster: Image?,
-                val year: CharSequence?,
                 val directors: CharSequence?,
                 val description: CharSequence?
         ) : Item()
@@ -73,7 +72,6 @@ private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
     itemView.titleTextView.text = header.title
     itemView.directorLabelTextView.visibility = if (header.directors == null) GONE else VISIBLE
     itemView.directorsTextView.textOrGone(header.directors)
-    itemView.yearTextView.textOrGone(header.year)
     itemView.descriptionTextView.textOrGone(header.description)
 }
 
