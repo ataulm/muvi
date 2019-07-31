@@ -5,11 +5,11 @@ package com.muvi.core.di
  *
  * The core module needs an application context as DI root.
  * Therefore, the application classes of the apps using this module
- * should implement [CoreComponentProvider].
+ * should implement [AppComponentProvider].
  */
-interface CoreComponentProvider {
+interface AppComponentProvider {
     /**
-     * Returns the CoreComponent / DI root.
+     * Returns the AppComponent / DI root.
      */
-    fun provideCoreComponent(): CoreComponent
+    fun provideAppComponent(): AppComponent
 }

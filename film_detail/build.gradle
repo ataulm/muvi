@@ -4,12 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
+    compileOnly project(':letterboxd_api')
+    
     implementation project(':app')
     implementation project(':core')
     implementation project(':film_detail_data')
     implementation project(':film_detail_domain')
     implementation project(':film_detail_remote')
-    compileOnly project(':letterboxd_api')
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat

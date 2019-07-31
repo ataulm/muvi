@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.muvi.base_domain.Film
+import com.muvi.film_detail.di.FilmId
 import com.muvi.film_detail.domain.GetFilmDetailUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,13 +15,14 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 internal class FilmDetailViewModel(
+        private val filmId: String,
         private val getFilm: GetFilmDetailUseCase
 ) : ViewModel() {
 
     private val _film = MutableLiveData<Film>()
     val film: LiveData<Film> = _film
 
-    fun loadFilm(filmId: String) {
+    init {
         viewModelScope.launch(Dispatchers.IO) {
             val result = getFilm(filmId)
             Log.d("!!", "vm film detail: $result")
@@ -32,9 +34,10 @@ internal class FilmDetailViewModel(
 }
 
 internal class FilmDetailViewModelFactory @Inject constructor(
+    @FilmId private val filmId: String,
     private val getFilmsUseCase: GetFilmDetailUseCase
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>) = FilmDetailViewModel(getFilmsUseCase) as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>) = FilmDetailViewModel(filmId, getFilmsUseCase) as T
 }

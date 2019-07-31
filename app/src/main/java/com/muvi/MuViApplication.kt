@@ -1,17 +1,17 @@
 package com.muvi
 
 import android.app.Application
-import com.muvi.core.di.CoreComponent
-import com.muvi.core.di.CoreComponentProvider
-import com.muvi.core.di.DaggerCoreComponent
+import com.muvi.core.di.AppComponent
+import com.muvi.core.di.AppComponentProvider
+import com.muvi.core.di.DaggerAppComponent
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MuViApplication : Application(), CoreComponentProvider {
+class MuViApplication : Application(), AppComponentProvider {
 
-    private lateinit var coreComponent: CoreComponent
+    private lateinit var appComponent: AppComponent
 
-    override fun provideCoreComponent() = coreComponent
+    override fun provideAppComponent() = appComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -20,7 +20,7 @@ class MuViApplication : Application(), CoreComponentProvider {
             androidContext(this@MuViApplication)
         }
 
-        coreComponent = DaggerCoreComponent
+        appComponent = DaggerAppComponent
                 .builder()
                 .application(this)
                 .build()

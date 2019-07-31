@@ -32,7 +32,8 @@ class FilmDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inject(this)
+        val filmId = intent.extractFilmId()
+        inject(this, filmId)
 
         setContentView(R.layout.activity_film_detail)
 
@@ -48,6 +49,5 @@ class FilmDetailActivity : AppCompatActivity() {
                 }
             }
         })
-        filmDetailViewModel.loadFilm(intent.extractFilmId())
     }
 }

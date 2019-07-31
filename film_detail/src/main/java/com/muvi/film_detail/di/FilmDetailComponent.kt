@@ -1,7 +1,8 @@
 package com.muvi.film_detail.di
 
 import androidx.lifecycle.ViewModelProviders
-import com.muvi.core.di.CoreComponent
+import com.muvi.core.di.AppComponent
+import com.muvi.core.di.FeatureScope
 import com.muvi.film_detail.FilmDetailActivity
 import com.muvi.film_detail.FilmDetailViewModel
 import com.muvi.film_detail.FilmDetailViewModelFactory
@@ -18,8 +19,9 @@ import dagger.Provides
             FilmDetailDataModule::class,
             FilmDetailRemoteModule::class
         ],
-        dependencies = [CoreComponent::class]
+        dependencies = [AppComponent::class]
 )
+@FeatureScope
 internal interface FilmDetailComponent {
 
     fun inject(activity: FilmDetailActivity)
@@ -30,7 +32,11 @@ internal interface FilmDetailComponent {
         @BindsInstance
         fun activity(activity: FilmDetailActivity): Builder
 
-        fun coreComponent(module: CoreComponent): Builder
+        @BindsInstance
+        fun with(@FilmId filmId: String): Builder
+
+        fun coreComponent(module: AppComponent): Builder
+
         fun build(): FilmDetailComponent
     }
 }

@@ -1,7 +1,8 @@
 package com.muvi.feed.di
 
 import androidx.lifecycle.ViewModelProviders
-import com.muvi.core.di.CoreComponent
+import com.muvi.core.di.AppComponent
+import com.muvi.core.di.FeatureScope
 import com.muvi.feed.FeedFragment
 import com.muvi.feed.FeedViewModel
 import com.muvi.feed.FeedViewModelFactory
@@ -20,8 +21,9 @@ import dagger.Provides
             FeedCacheModule::class,
             FeedRemoteModule::class
         ],
-        dependencies = [CoreComponent::class]
+        dependencies = [AppComponent::class]
 )
+@FeatureScope
 internal interface FeedComponent {
 
     fun inject(fragment: FeedFragment)
@@ -32,7 +34,7 @@ internal interface FeedComponent {
         @BindsInstance
         fun fragment(fragment: FeedFragment): Builder
 
-        fun coreComponent(module: CoreComponent): Builder
+        fun coreComponent(module: AppComponent): Builder
         fun build(): FeedComponent
     }
 }

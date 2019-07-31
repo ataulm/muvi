@@ -3,8 +3,8 @@ package com.muvi.core.di
 import android.app.Activity
 import androidx.fragment.app.Fragment
 
-fun Fragment.coreComponent() = requireActivity().coreComponent()
+fun Fragment.appComponent() = requireActivity().appComponent()
 
-fun Activity.coreComponent() =
-        (applicationContext as? CoreComponentProvider)?.provideCoreComponent()
-                ?: throw IllegalStateException("CoreComponentProvider not implemented: $applicationContext")
+fun Activity.appComponent() =
+        (applicationContext as? AppComponentProvider)?.provideAppComponent()
+                ?: throw IllegalStateException("AppComponentProvider not implemented: $applicationContext")
