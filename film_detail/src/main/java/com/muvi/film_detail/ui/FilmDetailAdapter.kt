@@ -81,6 +81,7 @@ private fun TextView.textOrGone(newText: CharSequence?) {
 }
 
 private fun BoringViewHolder.bind(character: FilmDetailAdapter.Item.Character) {
+    itemView.setOnClickListener { character.onClick() }
     itemView.characterTextView.text = character.name
     itemView.actorTextView.text = character.actorName
 }
