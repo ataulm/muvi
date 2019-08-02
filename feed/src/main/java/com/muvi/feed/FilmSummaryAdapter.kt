@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.item_film_summary.view.*
 
 internal class FilmSummaryAdapter : ListAdapter<FilmSummaryUiModel, FilmSummaryAdapter.ViewHolder>(Differ) {
 
@@ -16,8 +18,11 @@ internal class FilmSummaryAdapter : ListAdapter<FilmSummaryUiModel, FilmSummaryA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val filmSummary = getItem(position)
-        (holder.itemView as TextView).apply {
-            text = filmSummary.title
+        (holder.itemView).apply {
+            Glide.with(this)
+                    .load(filmSummary.poster?.sizes?.lastOrNull()?.url)
+                    .into(posterImageView)
+            summaryTextView.text = filmSummary.title
             setOnClickListener { filmSummary.onClick() }
         }
     }

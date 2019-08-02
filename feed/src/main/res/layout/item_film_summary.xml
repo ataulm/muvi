@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:minHeight="48dp" />
+    tools:background="@android:color/holo_red_light">
+
+    <ImageView
+        android:id="@+id/posterImageView"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_blue_bright" />
+
+    <TextView
+        android:id="@+id/summaryTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:minHeight="48dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/posterImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_green_light"
+        tools:text="Spider-Man: Into the Spider-Verse (2018)" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

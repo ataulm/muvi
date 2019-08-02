@@ -14,10 +14,12 @@ dependencies {
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat
+    implementation libraries.androidxConstraintLayout
     implementation libraries.androidxLifecycleExtensions
     implementation libraries.androidxLifecycleViewmodelKtx
     implementation libraries.androidxRecyclerView
     implementation libraries.dagger
+    implementation libraries.glide
 
     kapt libraries.daggerCompiler
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.muvi.base_domain.Image
 import com.muvi.feed_domain.GetFilmsUseCase
 import com.muvi.navigation.EventWrapper
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +24,7 @@ class FeedViewModel @Inject constructor(private val getFilms: GetFilmsUseCase) :
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val uiModels = getFilms().map {
-                FilmSummaryUiModel(it.id, it.title) {
+                FilmSummaryUiModel(it.id, it.title, it.poster) {
                     _events.value = EventWrapper(Event.NavigateToFilmDetail(it.id))
                 }
             }
@@ -41,6 +42,7 @@ class FeedViewModel @Inject constructor(private val getFilms: GetFilmsUseCase) :
 data class FilmSummaryUiModel(
         val id: String,
         val title: String,
+        val poster: Image?,
         val onClick: () -> Unit
 )
 
