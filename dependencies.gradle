@@ -24,6 +24,7 @@ ext {
                     kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
             androidxAppCompat              : 'androidx.appcompat:appcompat:1.0.2',
+            androidxConstraintLayout       : 'androidx.constraintlayout:constraintlayout:2.0.0-beta2',
             androidxFragment               : 'androidx.fragment:fragment:1.2.0-alpha01',
             androidxLifecycleExtensions    : "androidx.lifecycle:lifecycle-extensions:${versions.androidXLifecycle}",
             androidxLifecycleViewmodelKtx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidXLifecycle}",
@@ -31,6 +32,7 @@ ext {
             dagger                         : "com.google.dagger:dagger:${versions.dagger}",
             daggerCompiler                 : "com.google.dagger:dagger-compiler:${versions.dagger}",
             daggerProcessor                : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            glide                          : 'com.github.bumptech.glide:glide:4.9.0',
             koin                           : "org.koin:koin-core:${versions.koin}",
             koinAndroid                    : "org.koin:koin-android:${versions.koin}",
             koinScope                      : "org.koin:koin-androidx-scope:${versions.koin}",

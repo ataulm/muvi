@@ -1,30 +1,17 @@
 package com.muvi.film_detail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.muvi.base_domain.Film
 import com.muvi.film_detail.di.inject
+import com.muvi.film_detail.ui.FilmDetailAdapter
 import com.muvi.navigation.actorDetailIntent
 import com.muvi.navigation.extractFilmId
 import kotlinx.android.synthetic.main.activity_film_detail.*
 import javax.inject.Inject
 
-/**
- * TODO: show:
- *
- * - poster
- * - backdrop
- * - description
- * - year
- * - directors
- * - title
- * - list of characters
- *      - image (optional)
- *      - actor name
- *      - character name
- */
 class FilmDetailActivity : AppCompatActivity() {
 
     @Inject
@@ -37,17 +24,41 @@ class FilmDetailActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_film_detail)
 
-        Log.d("!!", "activity film detail: ${intent.extractFilmId()}")
+        val adapter = FilmDetailAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
-        val button = firstActorButton
         filmDetailViewModel.film.observe(this, Observer<Film> { film ->
-            film?.characters?.first()?.let {
-                val actor = it.actor
-                button.text = actor.name
-                button.setOnClickListener {
-                    startActivity(actorDetailIntent(actor.id))
-                }
+            film?.toUiModel()?.let {
+                adapter.submitList(it)
             }
         })
+    }
+
+    private fun Film.toUiModel(): List<FilmDetailAdapter.Item> {
+        val header = FilmDetailAdapter.Item.Header(
+                title = year?.let { "$title ($it)" } ?: title,
+                backdrop = backdrop,
+                poster = poster,
+                directors = directors(),
+                description = description
+        )
+        val charactersUiModel = characters.map { character ->
+            FilmDetailAdapter.Item.Character(
+                    name = character.name,
+                    actorName = character.actor.name,
+                    onClick = { startActivity(actorDetailIntent(character.actor.id)) }
+            )
+        }
+        return listOf(header) + charactersUiModel
+    }
+
+    private fun Film.directors() = when (directors.size) {
+        0 -> null
+        1 -> directors[0]
+        else -> {
+            val firstLot = directors.subList(0, directors.size - 1).joinToString(separator = ", ")
+            firstLot + " & " + directors.last()
+        }
     }
 }

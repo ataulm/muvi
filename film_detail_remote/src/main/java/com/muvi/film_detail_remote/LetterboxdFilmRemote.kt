@@ -17,35 +17,36 @@ internal class LetterboxdFilmRemote @Inject constructor(
     override suspend fun getFilm(filmId: String): Film {
         return letterboxdApi.film(filmId).let { filmModel ->
             Film(
-                id = filmModel.id,
-                title = filmModel.name,
-                year = filmModel.releaseYear,
-                directors = filmModel.directors(),
-                poster = filmModel.poster?.image(),
-                description = filmModel.description,
-                backdrop = filmModel.backdrop?.image(),
-                characters = filmModel.characters()
+                    id = filmModel.id,
+                    title = filmModel.name,
+                    year = filmModel.releaseYear,
+                    directors = filmModel.directors(),
+                    poster = filmModel.poster?.image(),
+                    description = filmModel.description,
+                    backdrop = filmModel.backdrop?.image(),
+                    characters = filmModel.characters()
             )
         }
     }
 
-    private fun FilmModel.directors(): String {
+    private fun FilmModel.directors(): List<String> {
         return contributions.filter { contribution -> contribution.type == "Director" }
-            .flatMap { contribution -> contribution.contributors }
-            .joinToString(separator = " & ") { contributor -> contributor.name }
+                .flatMap { contribution -> contribution.contributors }
+                .map { contributor -> contributor.name }
+
     }
 
     private fun FilmModel.characters(): List<Character> {
         return contributions.filter { contribution -> contribution.type == "Actor" }
-            .flatMap { contribution -> contribution.contributors }
-            .map { contributor ->
-                val actor = Actor(contributor.id, contributor.name)
-                Character(contributor.characterName!!, actor)
-            }
+                .flatMap { contribution -> contribution.contributors }
+                .map { contributor ->
+                    val actor = Actor(contributor.id, contributor.name)
+                    Character(contributor.characterName!!, actor)
+                }
     }
 
     private fun ImageModel.image() = sizes
-        .map { sizeModel -> Image.Size(sizeModel.width, sizeModel.height, sizeModel.url) }
-        .let { sizes -> Image(sizes) }
+            .map { sizeModel -> Image.Size(sizeModel.width, sizeModel.height, sizeModel.url) }
+            .let { sizes -> Image(sizes) }
 
 }

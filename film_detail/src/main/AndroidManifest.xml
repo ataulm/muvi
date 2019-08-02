@@ -3,15 +3,17 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.muvi.film_detail">
 
+    <application>
+        <activity
+            android:name=".FilmDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
     <dist:module
         dist:instant="false"
         dist:onDemand="false"
         dist:title="@string/title_film_detail">
         <dist:fusing dist:include="true" />
     </dist:module>
-
-    <application>
-        <activity android:name=".FilmDetailActivity" />
-    </application>
 
 </manifest>
