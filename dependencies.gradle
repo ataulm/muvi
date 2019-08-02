@@ -19,6 +19,9 @@ ext {
 
     libraries = [
             build                          : [
+                    /**
+                     * When updating to 3.6, remove lint suppress in FilmDetailAdapter
+                     */
                     androidGradle        : 'com.android.tools.build:gradle:3.5.0-rc02',
                     gradleBuildProperties: 'com.novoda:gradle-build-properties-plugin:0.4.1',
                     kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"

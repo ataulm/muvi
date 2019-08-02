@@ -1,5 +1,6 @@
 package com.muvi.film_detail.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -42,6 +43,7 @@ internal class FilmDetailAdapter() : ListAdapter<FilmDetailAdapter.Item, BoringV
             else -> false
         }
 
+        @SuppressLint("DiffUtilEquals") // https://issuetracker.google.com/issues/132234925
         override fun areContentsTheSame(oldItem: Item, newItem: Item) = oldItem == newItem
     }
 
