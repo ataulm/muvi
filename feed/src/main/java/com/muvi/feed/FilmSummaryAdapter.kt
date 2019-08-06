@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.muvi.base_domain.FilmSummary
-import kotlinx.android.synthetic.main.item_film_summary.view.*
+import com.muvi.design_library.FilmSummaryView
 
 internal class FilmSummaryAdapter : ListAdapter<UiModel, FilmSummaryAdapter.ViewHolder>(Differ) {
 
@@ -18,35 +17,19 @@ internal class FilmSummaryAdapter : ListAdapter<UiModel, FilmSummaryAdapter.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val uiModel = getItem(position)
-        Glide.with(holder.itemView)
-                .load(uiModel.filmSummary.poster?.sizes?.lastOrNull()?.url)
-                .into(holder.itemView.posterImageView)
-        holder.itemView.summaryTextView.text = uiModel.filmSummary.title()
-        holder.itemView.setOnClickListener { uiModel.onClick() }
-    }
-
-    private fun FilmSummary.title(): CharSequence {
-        val directors = directors()
-        return when {
-            year != null && directors != null -> "$title, $year, $directors"
-            year != null -> "$title, $year"
-            directors != null -> "$title, $directors"
-            else -> title
-        }
-    }
-
-    private fun FilmSummary.directors() = when (directors.size) {
-        0 -> null
-        1 -> directors[0]
-        else -> {
-            val firstLot = directors.subList(0, directors.size - 1).joinToString(separator = ", ")
-            firstLot + " & " + directors.last()
-        }
+        val model = FilmSummaryView.Model(
+                title = uiModel.title,
+                year = uiModel.year,
+                poster = uiModel.poster,
+                directors = uiModel.directors,
+                onClick = uiModel.onClick
+        )
+        (holder.itemView as FilmSummaryView).bind(model)
     }
 
     object Differ : DiffUtil.ItemCallback<UiModel>() {
 
-        override fun areItemsTheSame(oldItem: UiModel, newItem: UiModel) = oldItem.filmSummary.id == newItem.filmSummary.id
+        override fun areItemsTheSame(oldItem: UiModel, newItem: UiModel) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: UiModel, newItem: UiModel) = oldItem == newItem
     }
