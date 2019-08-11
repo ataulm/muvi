@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Theme colors -->
+    <color name="color_primary">@color/letterboxd_grey</color>
+    <color name="color_primary_variant">@color/letterboxd_grey_dark</color>
+    <color name="color_on_primary">@color/white</color>
+    <color name="color_secondary">@color/letterboxd_green</color>
+    <color name="color_secondary_variant">@color/letterboxd_green_dark</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_error">@color/letterboxd_orange_dark</color>
+    <color name="color_on_error">@color/white</color>
+    <color name="color_surface">@color/letterboxd_grey_extra_light</color>
+    <color name="color_on_surface">@color/black</color>
+    <color name="color_background">@color/white</color>
+    <color name="color_on_background">@color/black</color>
+    <color name="color_system_bar">@color/letterboxd_grey_dark</color>
+
+    <!-- Letterboxd colors -->
+    <color name="letterboxd_grey_extra_dark">#13181b</color>
+    <color name="letterboxd_grey_dark">#1b2c3c</color>
+    <color name="letterboxd_grey">#445566</color>
+    <color name="letterboxd_grey_light">#99aabb</color>
+    <color name="letterboxd_grey_extra_light">#ddeeff</color>
+    <color name="letterboxd_orange_dark">#c55100</color>
+    <color name="letterboxd_orange">#ff8001</color>
+    <color name="letterboxd_orange_light">#ffb143</color>
+    <color name="letterboxd_green_dark">#008e00</color>
+    <color name="letterboxd_green">#00c030</color>
+    <color name="letterboxd_green_light">#5ef462</color>
+    <color name="letterboxd_blue_dark">#008cc1</color>
+    <color name="letterboxd_blue">#41bcf4</color>
+    <color name="letterboxd_blue_light">#80eeff</color>
+
+    <!-- General colors -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+</resources>
