@@ -14,7 +14,8 @@
     <color name="color_on_surface">@color/black</color>
     <color name="color_background">@color/white</color>
     <color name="color_on_background">@color/black</color>
-    <color name="color_system_bar">@color/letterboxd_grey_dark</color>
+    <color name="color_status_bar">@color/letterboxd_grey_dark</color>
+    <color name="color_navigation_bar">@color/letterboxd_grey_extra_dark</color>
 
     <!-- Letterboxd colors -->
     <color name="letterboxd_grey_extra_dark">#13181b</color>
