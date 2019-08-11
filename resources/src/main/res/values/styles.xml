@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Muvi.Chip.Action" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="android:textAppearance">@style/TextAppearance.Muvi.Chip</item>
+    </style>
+
+    <style name="Widget.Muvi.Chip.Entry" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="android:textAppearance">@style/TextAppearance.Muvi.Chip</item>
+    </style>
+
+</resources>
