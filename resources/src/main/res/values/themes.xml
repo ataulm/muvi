@@ -21,6 +21,10 @@
         <!-- Type attributes -->
         <item name="android:fontFamily">@font/poppins</item>
         <item name="fontFamily">@font/poppins</item>
+        <!-- Shape attributes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Muvi.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Muvi.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Muvi.LargeComponent</item>
         <!-- Widget style attributes -->
         <item name="chipStyle">@style/Widget.Muvi.Chip.Action</item>
         <item name="chipStandaloneStyle">@style/Widget.Muvi.Chip.Entry</item>
@@ -43,6 +47,10 @@
         <!-- System bar attributes -->
         <item name="android:statusBarColor">@color/color_system_bar</item>
         <item name="android:navigationBarColor">@color/color_system_bar</item>
+        <!-- Shape attributes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Muvi.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Muvi.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Muvi.LargeComponent</item>
         <!-- Type attributes -->
         <item name="android:fontFamily">@font/poppins</item>
         <item name="fontFamily">@font/poppins</item>
