@@ -21,6 +21,8 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':feed')
+    implementation project(':navigation')
+    implementation project(':resources')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx

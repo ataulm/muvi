@@ -1,3 +1,5 @@
+![MuVi icon](https://github.com/ataulm/muvi/blob/task/app-icon/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
 MuVi
 ====
 
