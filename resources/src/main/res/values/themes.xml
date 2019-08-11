@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Muvi" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+    </style>
+
+    <style name="Theme.Muvi.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+    </style>
+
+</resources>
