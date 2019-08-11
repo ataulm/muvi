@@ -1,0 +1,6 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    implementation libraries.androidxAppCompat
+    implementation libraries.materialComponents
+}
