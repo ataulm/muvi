@@ -17,7 +17,7 @@ internal class ActorDetailFilmAdapter : ListAdapter<UiModel.Film, ActorDetailFil
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val uiModel = getItem(position)
         val model = FilmSummaryView.Model(
-                title = uiModel.title,
+                title = if (uiModel.characterName != null) "${uiModel.characterName} in ${uiModel.title}" else uiModel.title,
                 year = uiModel.year,
                 poster = uiModel.poster,
                 directors = uiModel.directors,
