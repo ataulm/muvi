@@ -9,6 +9,9 @@ data class DbFilmSummary(
         @ColumnInfo(name = "release_year") val releaseYear: Int?,
         @field:TypeConverters(StringListConverters::class)
         @ColumnInfo(name = "directors") val directors: List<String>,
+        // TODO: It's not safe to serialise models like this because
+        //  the schema can change — we'd have to nuke the DB on upgrade (sure)
+        //  or provide migrations between versions (NO)
         @Embedded val poster: DbImage
 )
 

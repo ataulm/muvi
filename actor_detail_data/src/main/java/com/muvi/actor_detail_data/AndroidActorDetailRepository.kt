@@ -14,17 +14,19 @@ class AndroidActorDetailRepository internal constructor(private val letterboxdAp
 
     override suspend fun getFilmsByActor(id: String): ActorDetail {
         val filmContributions = letterboxdApi.filmsByActor(id).items
-        return ActorDetail(filmContributions.map { filmContributionModel ->
-            CharacterInFilm(
-                filmContributionModel.characterName,
-                FilmSummary(
-                        id = filmContributionModel.film.id,
-                        title = filmContributionModel.film.name,
-                        year = filmContributionModel.film.releaseYear,
-                        directors = filmContributionModel.film.directors.map { director -> director.name },
-                        poster = filmContributionModel.film.poster?.image()
-                )
-        ) })
+        return ActorDetail(
+                films = filmContributions.map { filmContributionModel ->
+                    CharacterInFilm(
+                            filmContributionModel.characterName,
+                            FilmSummary(
+                                    id = filmContributionModel.film.id,
+                                    title = filmContributionModel.film.name,
+                                    year = filmContributionModel.film.releaseYear,
+                                    directors = filmContributionModel.film.directors.map { director -> director.name },
+                                    poster = filmContributionModel.film.poster?.image()
+                            )
+                    )
+                })
     }
 
     private fun ImageModel.image() = sizes

@@ -32,7 +32,7 @@ internal class FeedFragment : Fragment() {
         val adapter = FilmSummaryAdapter()
         recyclerView.adapter = adapter
         feedViewModel.films.observe(this, Observer<List<UiModel>> { films ->
-            films?.let { adapter.submitList(it) }
+            adapter.submitList(films)
         })
 
         feedViewModel.events.observe(this, EventObserver {

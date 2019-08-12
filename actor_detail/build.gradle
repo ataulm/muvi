@@ -6,10 +6,12 @@ dependencies {
     implementation project(':actor_detail_data')
     implementation project(':actor_detail_domain')
     implementation project(':app')
+    implementation project(':design_library')
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx
+    implementation libraries.androidxRecyclerView
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel

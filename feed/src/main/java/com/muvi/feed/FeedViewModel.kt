@@ -51,7 +51,6 @@ internal class FeedViewModelFactory @Inject constructor(private val getFilmsUseC
     override fun <T : ViewModel?> create(modelClass: Class<T>) = FeedViewModel(getFilmsUseCase) as T
 }
 
-// TALK: this UI model is the same as actor view model.uimodel
 internal data class UiModel(
         val id: String,
         val title: String,
