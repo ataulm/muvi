@@ -25,8 +25,8 @@ class FilmSummaryView(context: Context, attrs: AttributeSet) : ConstraintLayout(
     private fun title(title: String, year: CharSequence?, directors: List<String>): CharSequence {
         val directorsText = directorsText(directors)
         return when {
-            year != null && directorsText != null -> "$title, $year, $directorsText"
-            year != null -> "$title, $year"
+            year != null && directorsText != null -> "$title ($year) $directorsText"
+            year != null -> "$title ($year)"
             directorsText != null -> "$title, $directorsText"
             else -> title
         }
