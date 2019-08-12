@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- BUG: Workaround for Chips not employing font family from theme -->
+    <!-- https://issuetracker.google.com/issues/127453566 -->
+    <style name="TextAppearance.Muvi.Chip" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+</resources>

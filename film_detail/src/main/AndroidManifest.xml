@@ -6,7 +6,7 @@
     <application>
         <activity
             android:name=".FilmDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.Muvi.NoActionBar" />
     </application>
 
     <dist:module
