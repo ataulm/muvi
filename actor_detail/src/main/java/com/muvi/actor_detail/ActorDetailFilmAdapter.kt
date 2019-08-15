@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.muvi.design_library.FilmSummaryView
+import com.muvi.design_library.ListItem1View
+import com.muvi.design_library.commaAmpersandList
 import com.muvi.design_library.R as designLibrary
 
 internal class ActorDetailFilmAdapter : ListAdapter<UiModel.Film, ActorDetailFilmAdapter.ViewHolder>(Differ) {
@@ -17,14 +18,20 @@ internal class ActorDetailFilmAdapter : ListAdapter<UiModel.Film, ActorDetailFil
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val uiModel = getItem(position)
-        val model = FilmSummaryView.Model(
-                title = if (uiModel.characterName != null) "${uiModel.title} (as ${uiModel.characterName})" else uiModel.title,
-                year = uiModel.year,
+        val model = ListItem1View.Model(
                 poster = uiModel.poster,
-                directors = uiModel.directors,
+                title = title(uiModel.title, uiModel.characterName, uiModel.year, uiModel.directors),
                 onClick = uiModel.onClick
         )
-        (holder.itemView as FilmSummaryView).bind(model)
+        (holder.itemView as ListItem1View).bind(model)
+    }
+
+    private fun title(title: String, characterName: CharSequence?, year: CharSequence?, directors: List<String>): CharSequence {
+        val titleBuilder = StringBuilder(title)
+        characterName?.let { titleBuilder.append(" as ($it)") }
+        year?.let { titleBuilder.append(" ($it)") }
+        directors.commaAmpersandList()?.let { titleBuilder.append(" $it") }
+        return titleBuilder.toString()
     }
 
     object Differ : DiffUtil.ItemCallback<UiModel.Film>() {
