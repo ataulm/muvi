@@ -13,7 +13,6 @@ dependencies {
     implementation project(':feed_domain')
     implementation project(':feed_remote')
     implementation project(':navigation')
-    implementation project(':resources')
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxConstraintLayout

@@ -8,7 +8,8 @@ dependencies {
     // class com.muvi.design_library.ListItem1View, unresolved supertypes: androidx.constraintlayout.widget.ConstraintLayout
     api libraries.androidxConstraintLayout
 
-    implementation project(':resources')
+    // TODO : collapse resources into here
+    api project(':resources')
 
     implementation libraries.glide
 }

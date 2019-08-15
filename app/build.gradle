@@ -20,7 +20,6 @@ android {
 
 dependencies {
     api project(':design_library')
-    api project(':resources')
 
     implementation project(':core')
     implementation project(':feed')
