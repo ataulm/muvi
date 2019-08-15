@@ -17,7 +17,7 @@ class AndroidActorDetailRepository internal constructor(private val letterboxdAp
         return ActorDetail(
                 films = filmContributions.map { filmContributionModel ->
                     CharacterInFilm(
-                            filmContributionModel.characterName,
+                            filmContributionModel.characterName?.let { if (it.isEmpty()) null else it },
                             FilmSummary(
                                     id = filmContributionModel.film.id,
                                     title = filmContributionModel.film.name,
