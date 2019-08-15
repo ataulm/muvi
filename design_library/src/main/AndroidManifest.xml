@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.muvi.design_library" />
+<manifest package="com.muvi.design_library"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <activity android:name="com.muvi.design_library.ThemePlaygroundActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+    </application>
+
+</manifest>

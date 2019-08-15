@@ -1,4 +1,4 @@
-package com.muvi.resources
+package com.muvi.design_library
 
 import androidx.appcompat.app.AppCompatActivity
 

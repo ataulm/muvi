@@ -1,9 +1,0 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-dependencies {
-    implementation libraries.androidxAppCompat
-    implementation libraries.androidxConstraintLayout
-    implementation libraries.kotlinStdLib
-    implementation libraries.materialComponents
-}

@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ThemePlaygroundActivity">
+        tools:context="com.muvi.design_library.ThemePlaygroundActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,14 +35,14 @@
                 android:text="Unelevated Button" />
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/outlinedButtonButton"
+                android:id="@+id/outlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/unelevatedButton"
+                app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="Outlined Button" />
 
         <com.google.android.material.button.MaterialButton
@@ -52,8 +52,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/outlinedButtonButton"
+                app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                app:layout_constraintStart_toEndOf="@id/outlinedButton"
                 android:text="Text Button" />
 
         <com.google.android.material.chip.Chip
@@ -63,7 +63,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="?attr/chipStandaloneStyle"
-                app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                app:layout_constraintTop_toBottomOf="@id/outlinedButton"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="Input Chip" />
 
@@ -74,7 +74,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                app:layout_constraintTop_toBottomOf="@id/outlinedButton"
                 app:layout_constraintStart_toEndOf="@id/inputChip"
                 android:text="Choice Chip" />
 
@@ -85,8 +85,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
-                app:layout_constraintTop_toBottomOf="@id/raisedButton"
-                app:layout_constraintStart_toEndOf="@id/choiceChip"
+                app:layout_constraintTop_toBottomOf="@id/inputChip"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="Filter Chip" />
 
         <com.google.android.material.chip.Chip
@@ -97,7 +97,7 @@
                 android:layout_marginStart="16dp"
                 app:chipIcon="@drawable/ic_android_24dp"
                 style="?attr/chipStyle"
-                app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                app:layout_constraintTop_toBottomOf="@id/inputChip"
                 app:layout_constraintStart_toEndOf="@id/filterChip"
                 android:text="Action Chip" />
 
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@id/inputChip"
+                app:layout_constraintTop_toBottomOf="@id/filterChip"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="Checkbox" />
 
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@id/inputChip"
+                app:layout_constraintTop_toBottomOf="@id/filterChip"
                 app:layout_constraintStart_toEndOf="@id/checkBox"
                 android:text="Radio Button" />
 
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@id/inputChip"
+                app:layout_constraintTop_toBottomOf="@id/filterChip"
                 app:layout_constraintStart_toEndOf="@id/radioButton"
                 android:text="Switch" />
 
@@ -155,8 +155,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:layout_constraintTop_toBottomOf="@id/checkBox"
-                app:layout_constraintStart_toEndOf="@id/filledBoxTextField"
+                app:layout_constraintTop_toBottomOf="@id/filledBoxTextField"
+                app:layout_constraintStart_toStartOf="parent"
                 android:hint="Outlined Box Text Field">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -183,9 +183,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/filledBoxTextField"
+                app:layout_constraintTop_toBottomOf="@id/outlinedBoxTextField"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/card">
+                app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab1"
@@ -217,15 +217,17 @@
                 app:menu="@menu/menu_bottom_navigation"
                 app:layout_constraintTop_toBottomOf="@id/tabs"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/card" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/filledBoxTextField"
+                app:layout_constraintTop_toBottomOf="@id/bottomNavigation"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
