@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.muvi.design_library.FilmSummaryView
-import com.muvi.design_library.R
+import com.muvi.design_library.R as designLibrary
 
 internal class ActorDetailFilmAdapter : ListAdapter<UiModel.Film, ActorDetailFilmAdapter.ViewHolder>(Differ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_film_summary, parent, false)
+            .inflate(designLibrary.layout.item_film_summary, parent, false)
             .run { ViewHolder(this) }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
