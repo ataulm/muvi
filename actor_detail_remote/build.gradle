@@ -1,0 +1,12 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(':base_domain')
+    implementation project(':actor_detail_data')
+    implementation project(':actor_detail_domain')
+    implementation project(':letterboxd_api')
+
+    implementation libraries.koin
+    implementation libraries.kotlinStdLib
+}
