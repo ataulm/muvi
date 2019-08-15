@@ -28,7 +28,7 @@ internal class ActorDetailFilmAdapter : ListAdapter<UiModel.Film, ActorDetailFil
 
     private fun title(title: String, characterName: CharSequence?, year: CharSequence?, directors: List<String>): CharSequence {
         val titleBuilder = StringBuilder(title)
-        characterName?.let { titleBuilder.append(" as ($it)") }
+        characterName?.let { titleBuilder.append(" as $it") }
         year?.let { titleBuilder.append(" ($it)") }
         directors.commaAmpersandList()?.let { titleBuilder.append(" $it") }
         return titleBuilder.toString()
