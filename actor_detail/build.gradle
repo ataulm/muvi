@@ -10,6 +10,7 @@ dependencies {
 
     implementation libraries.androidxAppCompat
     implementation libraries.androidxLifecycleViewmodelKtx
+    implementation libraries.androidxRecyclerView
     implementation libraries.koin
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.muvi.base_domain.Image
+import com.muvi.core.textOrGone
 import com.muvi.film_detail.R
 import kotlinx.android.synthetic.main.film_detail_item_character.view.*
 import kotlinx.android.synthetic.main.film_detail_item_header.view.*
@@ -75,11 +76,6 @@ private fun BoringViewHolder.bind(header: FilmDetailAdapter.Item.Header) {
     itemView.directorLabelTextView.visibility = if (header.directors == null) GONE else VISIBLE
     itemView.directorsTextView.textOrGone(header.directors)
     itemView.descriptionTextView.textOrGone(header.description)
-}
-
-private fun TextView.textOrGone(newText: CharSequence?) {
-    text = newText
-    visibility = if (newText == null) GONE else VISIBLE
 }
 
 private fun BoringViewHolder.bind(character: FilmDetailAdapter.Item.Character) {

@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    // Not sure if this is a bug or expected, but anyone using design_library needs constraintLayout also, hence `api`
+    // e: Supertypes of the following classes cannot be resolved. Please make sure you have the required dependencies in the classpath:
+    // class com.muvi.design_library.ListItem1View, unresolved supertypes: androidx.constraintlayout.widget.ConstraintLayout
+    api libraries.androidxConstraintLayout
+
+    implementation libraries.androidxAppCompat
+    implementation libraries.glide
+    implementation libraries.kotlinStdLib
+    implementation libraries.materialComponents
+}
