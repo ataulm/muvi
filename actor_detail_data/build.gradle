@@ -5,6 +5,7 @@ dependencies {
     implementation project(':actor_detail_domain')
     implementation project(':letterboxd_api')
 
+    implementation libraries.koin
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
