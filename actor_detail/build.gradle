@@ -5,7 +5,9 @@ apply plugin: 'kotlin-android-extensions'
 dependencies {
     implementation project(':actor_detail_data')
     implementation project(':actor_detail_domain')
+    implementation project(':actor_detail_remote')
     implementation project(':app')
+    implementation project(':core')
     implementation project(':navigation')
 
     implementation libraries.androidxAppCompat

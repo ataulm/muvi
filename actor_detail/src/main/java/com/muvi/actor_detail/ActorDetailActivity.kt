@@ -3,6 +3,9 @@ package com.muvi.actor_detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.muvi.actor_detail_data.actorDetailDataModule
+import com.muvi.actor_detail_remote.actorDetailRemoteModule
+import com.muvi.core.di.letterboxdApiModule
 import com.muvi.navigation.EventObserver
 import com.muvi.navigation.extractActorId
 import com.muvi.navigation.filmDetailIntent
@@ -17,7 +20,7 @@ class ActorDetailActivity : AppCompatActivity(R.layout.activity_actor_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(actorDetailModule)
+        loadKoinModules(letterboxdApiModule, actorDetailModule, actorDetailDataModule, actorDetailRemoteModule)
 
         val adapter = ActorDetailFilmAdapter()
         recyclerView.adapter = adapter

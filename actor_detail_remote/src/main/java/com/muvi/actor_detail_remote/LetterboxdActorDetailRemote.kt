@@ -1,18 +1,18 @@
-package com.muvi.actor_detail_data
+package com.muvi.actor_detail_remote
 
+import com.muvi.actor_detail_data.ActorDetailRemote
 import com.muvi.actor_detail_domain.ActorDetail
-import com.muvi.actor_detail_domain.ActorDetailRepository
 import com.muvi.actor_detail_domain.CharacterInFilm
 import com.muvi.base_domain.FilmSummary
 import com.muvi.base_domain.Image
-import com.muvi.remote.Clock
 import com.muvi.remote.ImageModel
 import com.muvi.remote.LetterboxdApi
-import com.muvi.remote.LetterboxdApiFactory
 
-class AndroidActorDetailRepository internal constructor(private val letterboxdApi: LetterboxdApi) : ActorDetailRepository {
+internal class LetterboxdActorDetailRemote(
+        private val letterboxdApi: LetterboxdApi
+) : ActorDetailRemote {
 
-    override suspend fun getFilmsByActor(id: String): ActorDetail {
+    override suspend fun getActorDetail(id: String): ActorDetail {
         val filmContributions = letterboxdApi.filmsByActor(id).items
         return ActorDetail(
                 films = filmContributions.map { filmContributionModel ->
@@ -32,15 +32,4 @@ class AndroidActorDetailRepository internal constructor(private val letterboxdAp
     private fun ImageModel.image() = sizes
             .map { sizeModel -> Image.Size(sizeModel.width, sizeModel.height, sizeModel.url) }
             .let { sizes -> Image(sizes) }
-
-    companion object {
-
-        fun create(apiKey: String, apiSecret: String, enableHttpLogging: Boolean): AndroidActorDetailRepository {
-            val clock = object : Clock {
-                override fun currentTimeMillis(): Long = System.currentTimeMillis()
-            }
-            val api = LetterboxdApiFactory(apiKey, apiSecret, clock, enableHttpLogging).remoteLetterboxdApi()
-            return AndroidActorDetailRepository(api)
-        }
-    }
 }

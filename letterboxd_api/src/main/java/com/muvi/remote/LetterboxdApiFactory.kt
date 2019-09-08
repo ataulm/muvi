@@ -42,7 +42,7 @@ class LetterboxdApiFactory(private val apiKey: String,
 private class AddApiKeyQueryParameterInterceptor(private val apiKey: String, private val clock: Clock) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        val url = chain.request().url().newBuilder()
+        val url = chain.request().url.newBuilder()
                 .addQueryParameter("apikey", apiKey)
                 .addQueryParameter("nonce", UUID.randomUUID().toString())
                 .addQueryParameter("timestamp", TimeUnit.MILLISECONDS.toSeconds(clock.currentTimeMillis()).toString())
@@ -58,9 +58,9 @@ private class AddAuthorizationHeaderInterceptor(private val apiSecret: String) :
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
-        val url = chain.request().url()
+        val url = chain.request().url
 
-        val signature = generateSignature(chain.request().method(), url, chain.request().body())
+        val signature = generateSignature(chain.request().method, url, chain.request().body)
         builder.url(url)
         builder.addHeader(HEADER_AUTH, "Signature $signature")
 
@@ -85,7 +85,7 @@ private class AddAuthorizationHeaderInterceptor(private val apiSecret: String) :
 
     private fun FormBody.toUrlEncodedString(): String {
         val pairs = ArrayList<String>()
-        for (i in 0 until size()) {
+        for (i in 0 until size) {
             pairs.add(encodedName(i) + "=" + encodedValue(i))
         }
         return pairs.joinToString(separator = "&")
