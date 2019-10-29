@@ -12,4 +12,5 @@ dependencies {
     implementation libraries.glide
     implementation libraries.kotlinStdLib
     implementation libraries.materialComponents
+    implementation libraries.materialDesignComponentsShowcase
 }

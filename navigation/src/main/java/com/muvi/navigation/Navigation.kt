@@ -24,5 +24,5 @@ fun Intent.extractActorId(): String = getStringExtra(EXTRA_ACTOR_ID)
 
 fun themePlaygroundIntent(): Intent {
     return Intent(Intent.ACTION_VIEW)
-            .setClassName(PACKAGE_NAME, "$PACKAGE_NAME.resources.ThemePlaygroundActivity")
+            .setClassName(PACKAGE_NAME, "$PACKAGE_NAME.design_library.ThemePlaygroundActivity")
 }
