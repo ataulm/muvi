@@ -20,7 +20,7 @@ class ActorDetailActivity : AppCompatActivity(R.layout.activity_actor_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(letterboxdApiModule, actorDetailModule, actorDetailDataModule, actorDetailRemoteModule)
+        loadKoinModules(listOf(letterboxdApiModule, actorDetailModule, actorDetailDataModule, actorDetailRemoteModule))
 
         val adapter = ActorDetailFilmAdapter()
         recyclerView.adapter = adapter

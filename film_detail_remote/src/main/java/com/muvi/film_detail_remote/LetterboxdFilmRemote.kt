@@ -14,8 +14,8 @@ internal class LetterboxdFilmRemote @Inject constructor(
         private val letterboxdApi: LetterboxdApi
 ) : FilmDetailRemote {
 
-    override suspend fun getFilm(filmId: String): Film {
-        return letterboxdApi.film(filmId).let { filmModel ->
+    override suspend fun getFilm(id: String): Film {
+        return letterboxdApi.film(id).let { filmModel ->
             Film(
                     id = filmModel.id,
                     title = filmModel.name,
